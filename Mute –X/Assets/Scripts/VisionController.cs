@@ -7,11 +7,12 @@ public class VisionController : MonoBehaviour {
     // is the player within the enemy's sight range collider 
     //(this only checks if the enemy can theoretically see the player if nothing is in the way)
     public bool playerInRange;
-    public SpriteRenderer spr;
+    public SpriteRenderer sprit;
     public Transform lineOfSightEnd;
-    // a reference to the player for raycasting
+    public float visionAngle = 130;
+    // a reference to the player transform for raycasting
     Transform player;
-    float visionAngle = 80;
+    
     void Start()
     {
         playerInRange = false;
@@ -22,9 +23,9 @@ public class VisionController : MonoBehaviour {
     void FixedUpdate()
     {
         if (CanPlayerBeSeen())
-            spr.color = Color.red;
+            sprit.color = Color.red;
         else
-            spr.color = Color.white;
+            sprit.color = Color.white;
     }
 
 
@@ -92,17 +93,18 @@ public class VisionController : MonoBehaviour {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.position - transform.position, distanceToPlayer);
         // draw line in the Scene window to show where the raycast is looking
-        Debug.DrawRay(transform.position, player.position - transform.position, Color.blue); 
-        List<float> distances = new List<float>();
+       // Debug.DrawRay(transform.position, player.position - transform.position, Color.blue); 
+        
 
         foreach (RaycastHit2D hit in hits)
         {
             // ignore the enemy's own colliders (and other enemies)
-            if (hit.transform.tag == "Enemy")
+            if (hit.transform.tag.Equals("Enemy"))
                 continue;
 
-            // if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
-            if (hit.transform.tag != "Player")
+            // if anything other than the player is hit then it must be between the player and the enemy's eyes
+            //(since the player can only see as far as the player)
+            if (!hit.transform.tag.Equals("Player"))
             {
                 return true;
             }

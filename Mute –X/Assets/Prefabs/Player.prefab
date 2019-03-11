@@ -20,10 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4650323496486564}
   - component: {fileID: 212422730946960364}
-  - component: {fileID: 114344129337003802}
   - component: {fileID: 50537781053450982}
-  - component: {fileID: 114928347100223884}
   - component: {fileID: 60555333002360766}
+  - component: {fileID: 114928347100223884}
+  - component: {fileID: 114344129337003802}
+  - component: {fileID: 114329707930144596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -41,7 +42,7 @@ GameObject:
   - component: {fileID: 4222930607354230}
   - component: {fileID: 212930548025088022}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,13 +54,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975961762787346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.39, z: 0}
-  m_LocalScale: {x: 0.468987, y: 0.4689871, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.13, y: 0.2, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4650323496486564}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4650323496486564
 Transform:
   m_ObjectHideFlags: 1
@@ -127,6 +128,21 @@ PolygonCollider2D:
       - {x: 0.21499999, y: -0.155}
       - {x: 0.21499999, y: 0.074999996}
       - {x: 0.074999996, y: 0.175}
+--- !u!114 &114329707930144596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682555750028832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df26877c21fd6c245887e7367d6a662e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  Ammo: 20
+  Level: 1
+  Speed: 3
 --- !u!114 &114344129337003802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,8 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletVelocity: 10
-  bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
-  bullet1: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
+  offSet: 0.5
+  Bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!212 &212422730946960364
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -232,7 +248,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39f3ae27dd8148b4f9e8cb20aac56fe6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1653f225a83122a44a2dde9ff2ddb3a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
