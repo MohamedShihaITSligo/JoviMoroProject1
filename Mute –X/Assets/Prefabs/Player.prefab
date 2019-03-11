@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 212422730946960364}
   - component: {fileID: 114344129337003802}
   - component: {fileID: 50537781053450982}
-  - component: {fileID: 61031971887027450}
+  - component: {fileID: 114928347100223884}
+  - component: {fileID: 60555333002360766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -93,8 +94,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61031971887027450
-BoxCollider2D:
+--- !u!60 &60555333002360766
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,15 +110,23 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 0.43, y: 0.35}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.065, y: 0.175}
+      - {x: -0.205, y: 0.13499999}
+      - {x: -0.21499999, y: 0.105}
+      - {x: -0.21499999, y: -0.16499999}
+      - {x: -0.205, y: -0.175}
+      - {x: 0.16499999, y: -0.175}
+      - {x: 0.21499999, y: -0.155}
+      - {x: 0.21499999, y: 0.074999996}
+      - {x: 0.074999996, y: 0.175}
 --- !u!114 &114344129337003802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +138,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0155d9e957b8c834cb844a4fecc9ee9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114928347100223884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682555750028832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b135c0cdf03ed89469543bd231f106d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletVelocity: 10
+  bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
+  bullet1: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!212 &212422730946960364
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -164,7 +187,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39f3ae27dd8148b4f9e8cb20aac56fe6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 433d7758f4441e64b90d94727e14d2e9, type: 3}
   m_Color: {r: 0.06488074, g: 0.509434, b: 0.08651919, a: 1}
   m_FlipX: 0
   m_FlipY: 0
