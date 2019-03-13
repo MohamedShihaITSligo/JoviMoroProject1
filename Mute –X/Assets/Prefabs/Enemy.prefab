@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
-  spr: {fileID: 212980497294187160}
+  sprit: {fileID: 0}
   lineOfSightEnd: {fileID: 4848417791144908}
+  visionAngle: 130
 --- !u!212 &212980497294187160
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -203,7 +204,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 39f3ae27dd8148b4f9e8cb20aac56fe6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6955984, g: 0.9433962, b: 0.12904951, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
