@@ -8,17 +8,19 @@ public class PlayerAttack : MonoBehaviour
     public float xOffSet = 0.5f;
     public float yOffSet = 0.5f;
     public GameObject Bullet;
+    GameController gameController;
     PlayerData data;
 
     private void Start()
     {
         data = gameObject.GetComponentInParent<PlayerData>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     void Update()
     {
         // if the fire button is pressed and we have ammo shoOt !
-        if (Input.GetButtonDown("Fire1")&&data.Ammo>0)
+        if (Input.GetButtonDown("Fire1")&&data.Ammo>0 && !gameController.paused)
         {
             InstantiateBullet();
             data.Ammo--;

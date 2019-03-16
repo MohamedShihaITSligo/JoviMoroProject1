@@ -139,10 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df26877c21fd6c245887e7367d6a662e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
   Ammo: 20
   Level: 1
   Speed: 3
+  Xp: 0
+  Detected: 0
+  Health: 0
 --- !u!114 &114344129337003802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletVelocity: 10
-  offSet: 0.5
+  xOffSet: 0
+  yOffSet: 0
   Bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!212 &212422730946960364
 SpriteRenderer:
@@ -256,5 +259,5 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
