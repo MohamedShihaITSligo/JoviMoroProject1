@@ -53,8 +53,12 @@ public class FollowPath : MonoBehaviour {
 
     void GetNextNodePosition()
     {
-        if (currentNodeIndex >= path.NodeCount) currentNodeIndex = 0;
-        currentTarget = path.GetNodePosition(currentNodeIndex);
+        if (currentNodeIndex >= path.NodeCount)
+		{
+			currentNodeIndex = 0;
+		}
+
+		currentTarget = path.GetNodePosition(currentNodeIndex);
         transform.up = currentTarget - body.position;
         currentNodeIndex++;
     }
