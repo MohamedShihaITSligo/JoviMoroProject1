@@ -143,4 +143,19 @@ public class GameController: MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Resume();
     }
+
+    public void PlayerDetected()
+    {
+        data.Detected = true;
+    }
+
+    public bool IsPlayerDetected()
+    {
+        return data.Detected;
+    }
+
+    public Transform PlayerLocation()
+    {
+        return player.transform;
+    }
 }

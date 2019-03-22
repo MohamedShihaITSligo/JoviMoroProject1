@@ -7,17 +7,18 @@ public class FollowPath : MonoBehaviour {
     public NavigationPath path;
     public bool PickRandomStartNode = false;
     public bool canMove = true;
+    public bool detectedPlayer = false;
     public float moveSpeed = 2f;
+    int currentNodeIndex = 0;
     public float distanceToNodeTolerance = 0.2f;
     public float stopDistance;
-
     Vector2 currentTarget;
     Rigidbody2D body;
-    int currentNodeIndex = 0;
-    //StopBox stopBox;
+    GameController gameController;
 
     private void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         body = GetComponent<Rigidbody2D>();
         if (PickRandomStartNode)
         {
@@ -29,12 +30,15 @@ public class FollowPath : MonoBehaviour {
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance)
+
+        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance && !detectedPlayer)
         {
             GetNextNodePosition();
         }
-        //if (TraficLightGreen()) canMove = true;
-        //else canMove = false;
+        else if (detectedPlayer)
+        {
+            currentTarget = gameController.PlayerLocation().position;
+        } 
     }
 
     private void FixedUpdate()
@@ -59,23 +63,14 @@ public class FollowPath : MonoBehaviour {
         currentNodeIndex++;
     }
 
-    //bool TraficLightGreen()
-    //{
-    //    GameObject[] TraficLights = GameObject.FindGameObjectsWithTag("TrafficLight");
-    //    int shortestIndex = -1;
-    //    float shortestDistance = float.MaxValue;
-    //    for (int i = 0; i < TraficLights.Length; i++)
-    //    {
-    //        float trafficLightDistance = Vector2.Distance(transform.position, TraficLights[i].transform.position);
-    //        if (trafficLightDistance < shortestDistance)
-    //        {
-    //            shortestDistance = trafficLightDistance;
-    //            shortestIndex = i;
-    //        }
-    //    }
-    //    Color TraficLightColor = TraficLights[shortestIndex].GetComponent<TrafficLightController>().GetTrafgicLightState();
-    //    float distance = Vector2.Distance(transform.position, TraficLights[shortestIndex].transform.position);
-    //    if (distance < stopDistance && TraficLightColor.Equals(Color.red)) return false;
-    //    else return true;
-    //}
+    public void FoundPlayer()
+    {
+        detectedPlayer = true;
+    }
+    public void LostPlayer()
+    {
+        detectedPlayer = false;
+        GetNextNodePosition();
+        TeleportToNode();
+    }
 }

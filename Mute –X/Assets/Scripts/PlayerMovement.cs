@@ -25,12 +25,13 @@ public class PlayerMovement : MonoBehaviour {
         if (!gameController.paused)
         {
             // get the input 
-            vertical = Input.GetAxis("Vertical");
             horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
             // get the mouse position
             Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // rotat the player to the mouse direction
             transform.rotation = Quaternion.LookRotation(Vector3.forward, worldMousePos - transform.position);
+            
         }
     }
 
@@ -38,11 +39,12 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (!gameController.paused)
         {
-            // move the player forward with the speed from the data  
-            body.velocity = transform.up * vertical * data.Speed;
-            if (horizontal != 0)
-            { 
-                body.velocity = transform.right * horizontal * data.Speed;
+
+            // move the player forward with the speed from the data
+            body.velocity = transform.right * horizontal * data.Speed;
+            if (vertical != 0)
+            {
+                body.velocity = transform.up * vertical * data.Speed;
             }
             body.angularVelocity = 0;
         }

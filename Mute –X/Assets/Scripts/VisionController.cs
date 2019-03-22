@@ -9,23 +9,30 @@ public class VisionController : MonoBehaviour {
     public bool playerInRange;
     public SpriteRenderer sprit;
     public Transform lineOfSightEnd;
-    public float visionAngle = 130;
+    public float sightDis = 2;
+    public float visionAngle = 180;
     // a reference to the player transform for raycasting
     Transform player;
+    //GameController gameController;
     
     void Start()
     {
         playerInRange = false;
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
 
     void FixedUpdate()
     {
         if (CanPlayerBeSeen())
-            sprit.color = Color.red;
-        else
-            sprit.color = Color.white;
+        { 
+            gameObject.GetComponentInParent<FollowPath>().detectedPlayer = true;
+        }
+        else if (!CanPlayerBeSeen()&&Vector2.Distance(lineOfSightEnd.position, player.transform.position) >= sightDis)
+        {
+            gameObject.GetComponentInParent<FollowPath>().detectedPlayer = false;
+        }
     }
 
 

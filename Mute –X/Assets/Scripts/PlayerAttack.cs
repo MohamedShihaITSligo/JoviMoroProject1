@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public float bulletVelocity = 10f;
-    public float xOffSet = 0.5f;
-    public float yOffSet = 0.5f;
+    public float xOffSet = 0.1f;
+    public float yOffSet = 0.1f;
+    public GameObject gun;
     public GameObject Bullet;
     GameController gameController;
     PlayerData data;
+    
 
     private void Start()
     {
@@ -30,11 +32,11 @@ public class PlayerAttack : MonoBehaviour
 
     void InstantiateBullet()
     {
-        // i still don't know how to fix the pos of the bullet to the gun this is why i am using the off set 
+
         Vector3 position = new Vector3(
-            transform.position.x+xOffSet,
-            transform.position.y+yOffSet,
-            transform.position.z
+            gun.transform.position.x+xOffSet,
+            gun.transform.position.y+yOffSet,
+            gun.transform.position.z
             );  
         // Creates the bullet locally
         GameObject bullet = (GameObject)Instantiate(
