@@ -9,8 +9,9 @@ public class VisionController : MonoBehaviour {
     public bool playerInRange;
     public SpriteRenderer sprit;
     public Transform lineOfSightEnd;
-    public float sightDis = 2;
+    public float sightDis = 10;
     public float visionAngle = 180;
+    bool following = false;
     // a reference to the player transform for raycasting
     Transform player;
     //GameController gameController;
@@ -29,7 +30,7 @@ public class VisionController : MonoBehaviour {
         { 
             gameObject.GetComponentInParent<FollowPath>().detectedPlayer = true;
         }
-        else if (!CanPlayerBeSeen()&&Vector2.Distance(lineOfSightEnd.position, player.transform.position) >= sightDis)
+        else if (!CanPlayerBeSeen() && Vector2.Distance(player.transform.position,transform.position) > 5)
         {
             gameObject.GetComponentInParent<FollowPath>().detectedPlayer = false;
         }

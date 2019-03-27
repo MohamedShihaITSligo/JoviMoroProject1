@@ -6,15 +6,14 @@ public class FollowPath : MonoBehaviour {
 
     public NavigationPath path;
     public bool PickRandomStartNode = false;
-    public bool canMove = true;
     public bool detectedPlayer = false;
     public float moveSpeed = 2f;
     int currentNodeIndex = 0;
     public float distanceToNodeTolerance = 0.2f;
-    public float stopDistance;
     Vector2 currentTarget;
     Rigidbody2D body;
     GameController gameController;
+    bool following = false;
 
     private void Start()
     {
@@ -30,23 +29,23 @@ public class FollowPath : MonoBehaviour {
 
     private void Update()
     {
-
-        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance && !detectedPlayer)
+        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance )
         {
             GetNextNodePosition();
         }
-        else if (detectedPlayer)
+
+        if (detectedPlayer)
         {
-            currentTarget = gameController.PlayerLocation().position;
-        } 
+            FoundPlayer();
+        }else if (following)
+        {
+            LostPlayer();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
-        }
+        body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
         body.angularVelocity = 0;
     }
 
@@ -65,12 +64,15 @@ public class FollowPath : MonoBehaviour {
 
     public void FoundPlayer()
     {
-        detectedPlayer = true;
+        gameController.PlayerDetected();
+        currentTarget = gameController.PlayerLocation().position;
+        following = true;
     }
     public void LostPlayer()
     {
-        detectedPlayer = false;
-        GetNextNodePosition();
+        currentTarget = path.GetNodePosition(0);
+        gameController.PlayerUnDetected();
         TeleportToNode();
+        following = false;
     }
 }

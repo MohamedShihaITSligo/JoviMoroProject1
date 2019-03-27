@@ -148,6 +148,10 @@ public class GameController: MonoBehaviour {
     {
         data.Detected = true;
     }
+    public void PlayerUnDetected()
+    {
+        data.Detected = false;
+    }
 
     public bool IsPlayerDetected()
     {
