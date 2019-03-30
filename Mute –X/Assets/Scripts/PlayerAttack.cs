@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject Bullet;
     GameController gameController;
     PlayerData data;
-    
+    bool shooting;
 
     private void Start()
     {
@@ -26,9 +26,18 @@ public class PlayerAttack : MonoBehaviour
         {
             InstantiateBullet();
             data.Ammo--;
+            shooting = true;
+        }
+        else
+        {
+            shooting = false;
         }
     }
 
+    public bool IsShooting()
+    {
+        return shooting;
+    }
 
     void InstantiateBullet()
     {

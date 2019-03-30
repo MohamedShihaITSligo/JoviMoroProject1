@@ -5,16 +5,17 @@ using UnityEngine;
 public class FollowPath : MonoBehaviour {
 
     public NavigationPath path;
+    public float moveSpeed = 2f;
     public bool PickRandomStartNode = false;
     public bool detectedPlayer = false;
-    public float moveSpeed = 2f;
-    int currentNodeIndex = 0;
-    public float distanceToNodeTolerance = 0.2f;
-    Vector2 currentTarget;
-    Rigidbody2D body;
-    GameController gameController;
-    bool following = false;
-
+    protected bool canMove = true;
+    protected GameController gameController;
+    protected Rigidbody2D body;
+    protected float distanceToNodeTolerance = 0.2f;
+    protected Vector2 currentTarget;
+    protected int currentNodeIndex = 0;
+    
+    
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -27,29 +28,25 @@ public class FollowPath : MonoBehaviour {
         TeleportToNode();
     }
 
-    private void Update()
+    virtual protected void Update()
     {
         if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance )
         {
             GetNextNodePosition();
         }
 
-        if (detectedPlayer)
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        if (canMove)
         {
-            FoundPlayer();
-        }else if (following)
-        {
-            LostPlayer();
+            body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
+            body.angularVelocity = 0;
         }
     }
 
-    private void FixedUpdate()
-    {
-        body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
-        body.angularVelocity = 0;
-    }
-
-    void TeleportToNode()
+    public void TeleportToNode()
     {
         transform.position = currentTarget;
     }
@@ -62,17 +59,5 @@ public class FollowPath : MonoBehaviour {
         currentNodeIndex++;
     }
 
-    public void FoundPlayer()
-    {
-        gameController.PlayerDetected();
-        currentTarget = gameController.PlayerLocation().position;
-        following = true;
-    }
-    public void LostPlayer()
-    {
-        currentTarget = path.GetNodePosition(0);
-        gameController.PlayerUnDetected();
-        TeleportToNode();
-        following = false;
-    }
+   
 }

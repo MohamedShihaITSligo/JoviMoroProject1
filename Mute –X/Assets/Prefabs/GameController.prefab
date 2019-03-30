@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c606c2038ea5a654d9b5d838d086dbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  howToPlay: {fileID: 0}
+  paused: 0
+  firstLevl: 0
+  pauseMenu: {fileID: 1219020053614422, guid: 0d80926d5336ef74a8b22835dffe0eeb, type: 2}

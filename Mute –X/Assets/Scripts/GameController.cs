@@ -1,60 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 using UnityEngine.SceneManagement;
 
 public class GameController: MonoBehaviour {
 
-    public GameObject mainMenu;
-    public GameObject howToPlay;
-    public GameObject pauseMenu;
-    public GameObject eventSystem;
+
     public bool paused = false;
-    public bool justStarted = false;
+    public bool firstLevl = false;
+    public GameObject pauseMenu;
     Vector3 startingPoint;
-    Slider volume;
-    Text txtVolume;
     PlayerData data;
     GameObject player;
     
 
+
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        volume = mainMenu.gameObject.GetComponentInChildren<Slider>();
-        txtVolume = volume.GetComponentInChildren<Text>();
-        mainMenu.SetActive(true);
-        howToPlay.SetActive(false);
-        pauseMenu.SetActive(false);
-        player.SetActive(false);
+        pauseMenu = Instantiate(pauseMenu);
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(pauseMenu);
-        DontDestroyOnLoad(eventSystem);
-        DontDestroyOnLoad(player);
+        firstLevl = true;
     }
 
     private void Update()
     {
         int index = SceneManager.GetActiveScene().buildIndex;
-        if (index > 0 && Input.GetKeyDown(KeyCode.Escape))
+        if (index > 0 )
         {
-            if (!pauseMenu.activeInHierarchy)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Pause();
+                if (!paused)
+                {
+                    Pause();
+                }
+                else Resume();
             }
-            else Resume();
+            if (firstLevl)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+                data = player.GetComponent<PlayerData>();
+                startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
+                player.transform.position = startingPoint;
+                DontDestroyOnLoad(player);
+                firstLevl = false;
+            }
+            
         }
+
         switch (index)
         {
             case 1:
-                // write level 1 code here 
-                if (justStarted)
-                {
-                    startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
-                    player.transform.position = startingPoint;
-                    justStarted = false;
-                }
+                // write level 1 code here
                 break;
             case 2:
                 // write level 2 code here 
@@ -86,32 +83,7 @@ public class GameController: MonoBehaviour {
         Application.Quit();
     }
 
-    public void PlayButton()
-    {
-        GoToLevel(1);
-        player.SetActive(true);
-        data = player.GetComponent<PlayerData>();
-        
-    }
-
-    public void HowToPlay()
-    {
-        mainMenu.SetActive(false);
-        howToPlay.SetActive(true);
-    }
-
-    public void BackButton()
-    {
-        mainMenu.SetActive(true);
-        howToPlay.SetActive(false);
-    }
-
-    public void UpdateText()
-    {
-        float value = volume.value * 100;
-        txtVolume.text= value.ToString("0")+"%";
-    }
-
+ 
     public bool PlayerAlive()
     {
         
@@ -125,20 +97,16 @@ public class GameController: MonoBehaviour {
     public void GoToLevel(int index)
     {
         SceneManager.LoadScene(index);
-        justStarted = true;
     }
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
         Resume();
         Destroy(gameObject);
-        Destroy(pauseMenu);
-        Destroy(eventSystem);
-        Destroy(player);
     }
 
     public void RestartLevel()
-    {
+    { 
         player.transform.position = startingPoint;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Resume();
