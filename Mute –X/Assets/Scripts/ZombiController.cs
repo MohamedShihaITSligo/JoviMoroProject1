@@ -5,7 +5,13 @@ using UnityEngine;
 public class ZombiController : FollowPath {
 
     bool following = false;
-
+    public bool Idle = false;
+    bool WasIdle = false;
+    protected override void Start()
+    {
+        base.Start();
+        WasIdle = Idle;
+    }
     protected override void Update () {
         // if found the player start following
         base.Update();
@@ -21,31 +27,51 @@ public class ZombiController : FollowPath {
     }
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
-        
-        if (following)
+        if (!Idle)
         {
-            // code for zombi attack
-            transform.up = currentTarget - body.position;
-            body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
-            body.angularVelocity = 0;
+            base.FixedUpdate();
+
+            if (following)
+            {
+                // code for zombi attack
+                FollowTarget();
+            }
+        }
+        else
+        {
+            Stop();
         }
     }
 
-    public void FoundPlayer()
+    public void Stop()
+    {
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0;
+    }
+
+    void FoundPlayer()
     {
         gameController.PlayerDetected();
         currentTarget = gameController.PlayerLocation().position;
         following = true;
+        Idle = false;
         canMove = !following;
     }
-    public void LostPlayer()
+
+     void LostPlayer()
     {
         currentTarget = path.GetNodePosition(currentNodeIndex);
         gameController.PlayerUnDetected();
         TeleportToNode();
         following = false;
+        Idle = WasIdle;
         canMove = !following;
     }
     
+    void FollowTarget()
+    {
+        transform.up = currentTarget - body.position;
+        body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
+        body.angularVelocity = 0;
+    }
 }

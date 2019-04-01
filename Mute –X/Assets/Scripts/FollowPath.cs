@@ -8,15 +8,15 @@ public class FollowPath : MonoBehaviour {
     public float moveSpeed = 2f;
     public bool PickRandomStartNode = false;
     public bool detectedPlayer = false;
-    protected bool canMove = true;
+    public bool canMove = true;
     protected GameController gameController;
     protected Rigidbody2D body;
     protected float distanceToNodeTolerance = 0.2f;
     protected Vector2 currentTarget;
     protected int currentNodeIndex = 0;
-    
-    
-    private void Start()
+
+
+    virtual protected void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         body = GetComponent<Rigidbody2D>();
@@ -43,6 +43,8 @@ public class FollowPath : MonoBehaviour {
         {
             body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
             body.angularVelocity = 0;
+            Debug.Log("Velocity: "+body.velocity);
+            //Debug.Log("Velocity: "+body.velocity);
         }
     }
 

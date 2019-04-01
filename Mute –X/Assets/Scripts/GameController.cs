@@ -130,4 +130,9 @@ public class GameController: MonoBehaviour {
     {
         return player.transform;
     }
+
+    public void DamagePlayer(int amount)
+    {
+        data.DamegPlayer(amount);
+    }
 }
