@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ZombiController : FollowPath {
 
-    bool following = false;
+    
     public bool Idle = false;
     bool WasIdle = false;
     protected override void Start()
     {
         base.Start();
         WasIdle = Idle;
+        canMove = !Idle;
     }
     protected override void Update () {
         // if found the player start following
@@ -65,7 +66,7 @@ public class ZombiController : FollowPath {
         TeleportToNode();
         following = false;
         Idle = WasIdle;
-        canMove = !following;
+        canMove = !Idle;
     }
     
     void FollowTarget()

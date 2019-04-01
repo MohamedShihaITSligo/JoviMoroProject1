@@ -9,6 +9,7 @@ public class FollowPath : MonoBehaviour {
     public bool PickRandomStartNode = false;
     public bool detectedPlayer = false;
     public bool canMove = true;
+    public bool following = false;
     protected GameController gameController;
     protected Rigidbody2D body;
     protected float distanceToNodeTolerance = 0.2f;

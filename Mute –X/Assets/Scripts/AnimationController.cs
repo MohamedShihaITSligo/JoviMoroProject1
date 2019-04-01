@@ -55,13 +55,13 @@ public class AnimationController : MonoBehaviour {
             {
                 SetState(State.Atacking);
             }
-            else if (GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+            else if (GetComponent<FollowPath>().canMove || GetComponent<FollowPath>().following)
             {
-                SetState(State.Idle);
+                SetState(State.Walking);
             }
             else
             {
-                SetState(State.Walking);
+                SetState(State.Idle);
             }
         }
     }
