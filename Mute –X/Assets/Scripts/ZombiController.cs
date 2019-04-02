@@ -6,11 +6,10 @@ public class ZombiController : FollowPath {
 
     
     public bool Idle = false;
-    bool WasIdle = false;
+    public bool StayIdle = false;
     protected override void Start()
     {
         base.Start();
-        WasIdle = Idle;
         canMove = !Idle;
     }
     protected override void Update () {
@@ -65,7 +64,7 @@ public class ZombiController : FollowPath {
         gameController.PlayerUnDetected();
         TeleportToNode();
         following = false;
-        Idle = WasIdle;
+        Idle = StayIdle;
         canMove = !Idle;
     }
     

@@ -44,7 +44,6 @@ public class FollowPath : MonoBehaviour {
         {
             body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
             body.angularVelocity = 0;
-            Debug.Log("Velocity: "+body.velocity);
             //Debug.Log("Velocity: "+body.velocity);
         }
     }
@@ -62,5 +61,14 @@ public class FollowPath : MonoBehaviour {
         currentNodeIndex++;
     }
 
-   
+   public void AvoidWalls(int direction)
+    {
+
+        body.velocity = ((
+                (Vector2)transform.right * direction) +
+                ((Vector2)transform.up * direction)
+                )* moveSpeed;
+
+        body.angularVelocity = 0;
+    }
 }
