@@ -31,23 +31,25 @@ public class ZombiAttack : EnemyAttack
                 elipsedTime = Time.time + attackRate;
                 
             }
-            transform.position -=  new Vector3(
-                transform.up.x/3,
-                transform.up.y/3,
+            gameObject.GetComponent<Rigidbody2D>().MovePosition(transform.position - new Vector3(
+                transform.up.x / 3,
+                transform.up.y / 3,
                 0
-                );
+                ));
+            //transform.position -=  new Vector3(
+            //    transform.up.x/3,
+            //    transform.up.y/3,
+            //    0
+            //    );
             
         }
         else if (tag.Equals("Wall"))
         {
-            
-            //Vector3Int tilePos = new Vector3Int(
-            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.x,
-            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.y,
-            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.z
-            //    );
-            //gameController.DestroyWall(tilePos);
-            //Debug.Log("Wall: "+tilePos);
+            foreach (ContactPoint2D hit in collision.contacts)
+            {
+                gameController.DestroyWall(hit.point);
+            }
+            Debug.Log("Wall hit by:  "+gameObject.name);
         }
     }
 }

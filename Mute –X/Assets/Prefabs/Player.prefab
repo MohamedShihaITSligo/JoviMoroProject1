@@ -188,6 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb739e53e4f9e342906e84810980292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: 1
+  Ai: 0
 --- !u!114 &114344129337003802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,5 +305,5 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

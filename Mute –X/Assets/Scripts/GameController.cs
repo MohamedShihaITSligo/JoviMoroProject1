@@ -8,7 +8,7 @@ public class GameController: MonoBehaviour {
 
 
     public bool paused = false;
-    public bool firstLevl = false;
+    //public bool firstLevl;
     public Tilemap walls;
     public GameObject pauseMenu;
     Vector3 startingPoint;
@@ -25,6 +25,8 @@ public class GameController: MonoBehaviour {
 
     private void Update()
     {
+       
+
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index > 0 )
         {
@@ -36,16 +38,16 @@ public class GameController: MonoBehaviour {
                 }
                 else Resume();
             }
-            if (firstLevl)
-            { 
+            if (data == null)
+            {
                 player = GameObject.FindGameObjectWithTag("Player");
                 data = player.GetComponent<PlayerData>();
                 startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
                 player.transform.position = startingPoint;
                 //DontDestroyOnLoad(player);
-                firstLevl = false;
+                walls = GameObject.Find("Walls").GetComponent<Tilemap>();
+                //firstLevl = false;
             }
-            
         }
 
         switch (index)
@@ -111,9 +113,9 @@ public class GameController: MonoBehaviour {
     public void RestartLevel()
     {
         Resume();
-        Destroy(player);
+        //Destroy(player);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        firstLevl = true;
+        //firstLevl = true;
     }
 
     public void PlayerDetected()
@@ -146,9 +148,9 @@ public class GameController: MonoBehaviour {
         data.DamegPlayer(amount);
     }
 
-    public void DestroyWall(Vector3Int pos)
+    public void DestroyWall(Vector3 worldPosition)
     {
-        Vector3 touchPoint =  walls.GetComponent<TilemapCollider2D>().bounds.center;
-        walls.SetTile(pos,null);
+        Vector3Int cellPosition = walls.WorldToCell(worldPosition);
+        walls.SetTile(cellPosition, null);
     }
 }

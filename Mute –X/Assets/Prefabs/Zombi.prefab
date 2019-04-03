@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 114988311889615396}
   - component: {fileID: 114775714173066952}
   - component: {fileID: 60361596010304724}
-  - component: {fileID: 114864126112658906}
   - component: {fileID: 114629264102657728}
   m_Layer: 0
   m_Name: Zombi
@@ -279,20 +278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 5
---- !u!114 &114864126112658906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1604341694599696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7c1ced614a4ed428ccf055579e2172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MinDameg: 5
-  MaxDameg: 20
-  attacking: 0
 --- !u!114 &114988311889615396
 MonoBehaviour:
   m_ObjectHideFlags: 1
