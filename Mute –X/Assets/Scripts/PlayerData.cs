@@ -6,7 +6,7 @@ public class PlayerData : MonoBehaviour {
 
     const int MAX_XP = 100;
     const int MaxHealth = 100;
-    const int MAX_SPEED = 7;
+    const int MAX_SPEED = 6;
     public int Ammo = 20;
     public int Level = 1 ;
     public float Speed = 2;
@@ -25,7 +25,7 @@ public class PlayerData : MonoBehaviour {
         {
             Xp = 0;
             Level++;
-            Speed *= Level;
+            Speed += Speed/2;
             if (Speed > MAX_SPEED)
             {
                 Speed = MAX_SPEED;
@@ -36,6 +36,7 @@ public class PlayerData : MonoBehaviour {
     {
         Health = MaxHealth;
         Detected = false;
+        Xp = 0;
     }
 
     public void DamegPlayer(int amount)

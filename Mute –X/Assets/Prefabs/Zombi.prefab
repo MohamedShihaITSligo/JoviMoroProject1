@@ -54,9 +54,11 @@ GameObject:
   - component: {fileID: 212792691193603024}
   - component: {fileID: 95203469764691290}
   - component: {fileID: 50143637600499912}
-  - component: {fileID: 60318923280751430}
   - component: {fileID: 114988311889615396}
   - component: {fileID: 114775714173066952}
+  - component: {fileID: 60361596010304724}
+  - component: {fileID: 114864126112658906}
+  - component: {fileID: 114629264102657728}
   m_Layer: 0
   m_Name: Zombi
   m_TagString: Enemy
@@ -84,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604341694599696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.4, y: 20.5, z: 1}
+  m_LocalPosition: {x: -47.4, y: 20.5, z: -1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4041893192285884}
@@ -140,7 +142,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.484159
---- !u!60 &60318923280751430
+--- !u!60 &60361596010304724
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -164,62 +166,60 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.53999996, y: -0.81}
-      - {x: 0.78, y: -0.78999996}
-      - {x: 0.89, y: -0.69}
-      - {x: 0.90999997, y: -0.61}
-      - {x: 0.90999997, y: -0.59}
-      - {x: 0.87, y: -0.5}
-      - {x: 0.79999995, y: -0.42}
-      - {x: 0.71, y: -0.39}
-      - {x: 0.63, y: -0.42999998}
-      - {x: 0.47, y: -0.45}
-      - {x: 0.39999998, y: -0.58}
-      - {x: 0.32999998, y: -0.56}
-      - {x: 0.14999999, y: -0.57}
-      - {x: 0.099999994, y: -0.45}
-      - {x: 0.06, y: -0.39}
-      - {x: 0.14999999, y: -0.32999998}
-      - {x: 0.21, y: -0.26999998}
-      - {x: 0.26, y: -0.17}
-      - {x: 0.24, y: -0.07}
-      - {x: 0.21, y: 0.04}
-      - {x: 0.11, y: 0.099999994}
-      - {x: 0.07, y: 0.14}
-      - {x: 0.07, y: 0.26}
-      - {x: 0.06, y: 0.39}
-      - {x: 0.25, y: 0.37}
-      - {x: 0.37, y: 0.39999998}
-      - {x: 0.44, y: 0.28}
-      - {x: 0.55, y: 0.24}
-      - {x: 0.71999997, y: 0.21}
-      - {x: 0.84999996, y: 0.29999998}
-      - {x: 0.87, y: 0.42999998}
-      - {x: 0.84999996, y: 0.48999998}
-      - {x: 0.75, y: 0.59999996}
-      - {x: 0.55, y: 0.64}
-      - {x: 0.22, y: 0.72999996}
-      - {x: 0.01, y: 0.72999996}
-      - {x: -0.12, y: 0.76}
-      - {x: -0.21, y: 0.76}
-      - {x: -0.42, y: 0.7}
-      - {x: -0.61, y: 0.58}
-      - {x: -0.74, y: 0.45}
-      - {x: -0.91999996, y: 0.22}
-      - {x: -0.96, y: 0.14}
-      - {x: -1.02, y: -0.01}
-      - {x: -1.02, y: -0.099999994}
-      - {x: -0.96, y: -0.22}
-      - {x: -0.91999996, y: -0.41}
-      - {x: -0.85999995, y: -0.53}
-      - {x: -0.68, y: -0.71999997}
-      - {x: -0.45999998, y: -0.84}
-      - {x: -0.22999999, y: -0.94}
-      - {x: -0.14, y: -0.96}
-      - {x: -0.06, y: -0.96}
-      - {x: 0.04, y: -0.94}
-      - {x: 0.26, y: -0.90999997}
-      - {x: 0.44, y: -0.84999996}
+    - - {x: 0.59999996, y: -0.81}
+      - {x: 0.75, y: -0.64}
+      - {x: 0.89, y: -0.38}
+      - {x: 0.96, y: -0.13}
+      - {x: 0.96, y: -0.099999994}
+      - {x: 0.93, y: -0.07}
+      - {x: 0.93, y: 0.099999994}
+      - {x: 0.9, y: 0.26}
+      - {x: 0.84999996, y: 0.44}
+      - {x: 0.78999996, y: 0.78}
+      - {x: 0.69, y: 0.89}
+      - {x: 0.3447723, y: 1.2282689}
+      - {x: 0.59, y: 0.90999997}
+      - {x: 0.3939056, y: 1.2147839}
+      - {x: 0.23434955, y: 1.1182593}
+      - {x: 0.39, y: 0.71}
+      - {x: 0.45999998, y: 0.48}
+      - {x: 0.58, y: 0.39999998}
+      - {x: 0.56, y: 0.32999998}
+      - {x: 0.57, y: 0.14999999}
+      - {x: 0.39, y: 0.07}
+      - {x: 0.28, y: 0.22}
+      - {x: 0.17, y: 0.26}
+      - {x: 0.07, y: 0.24}
+      - {x: -0.04, y: 0.21}
+      - {x: -0.099999994, y: 0.11}
+      - {x: -0.14, y: 0.07}
+      - {x: -0.26, y: 0.07}
+      - {x: -0.39, y: 0.06}
+      - {x: -0.37, y: 0.25}
+      - {x: -0.39999998, y: 0.37}
+      - {x: -0.28, y: 0.44}
+      - {x: -0.24, y: 0.55}
+      - {x: -0.21, y: 0.71999997}
+      - {x: -0.036265053, y: 1.1246871}
+      - {x: -0.3000005, y: 1.1947821}
+      - {x: -0.42999998, y: 0.87}
+      - {x: -0.48999998, y: 0.84999996}
+      - {x: -0.38782752, y: 1.0682677}
+      - {x: -0.63, y: 0.55}
+      - {x: -0.72999996, y: 0.22}
+      - {x: -0.72999996, y: 0.01}
+      - {x: -0.76, y: -0.08}
+      - {x: -0.76, y: -0.22}
+      - {x: -0.75, y: -0.26999998}
+      - {x: -0.7, y: -0.42}
+      - {x: -0.58, y: -0.61}
+      - {x: -0.45, y: -0.74}
+      - {x: -0.19, y: -0.94}
+      - {x: 0.01, y: -1.02}
+      - {x: 0.099999994, y: -1.02}
+      - {x: 0.22, y: -0.96}
+      - {x: 0.41, y: -0.91999996}
+      - {x: 0.53, y: -0.84999996}
 --- !u!95 &95203469764691290
 Animator:
   serializedVersion: 3
@@ -254,6 +254,19 @@ MonoBehaviour:
   lineOfSightEnd: {fileID: 4041893192285884}
   sightDis: 3
   visionAngle: 180
+--- !u!114 &114629264102657728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604341694599696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb739e53e4f9e342906e84810980292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: 0
+  Ai: 1
 --- !u!114 &114775714173066952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,6 +279,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 5
+--- !u!114 &114864126112658906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604341694599696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7c1ced614a4ed428ccf055579e2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDameg: 5
+  MaxDameg: 20
+  attacking: 0
 --- !u!114 &114988311889615396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,12 +305,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 0}
-  moveSpeed: 2
-  PickRandomStartNode: 1
+  moveSpeed: 3
+  PickRandomStartNode: 0
   detectedPlayer: 0
   canMove: 1
   following: 0
-  Idle: 0
+  Idle: 1
   StayIdle: 0
 --- !u!212 &212792691193603024
 SpriteRenderer:

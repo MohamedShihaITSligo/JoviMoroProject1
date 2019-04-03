@@ -5,7 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class ZombiAttack : EnemyAttack
 {
-
+    public float attackRate = 2f;
+    float elipsedTime;
 
     private void Update()
     {
@@ -22,19 +23,17 @@ public class ZombiAttack : EnemyAttack
         string tag = collision.gameObject.tag;
         if (tag.Equals("Player"))
         {
-            gameController.DamagePlayer(Dameg);
-            attacking = true;
-            transform.position -= new Vector3(0.5f,0.5f,0);
-            GetComponent<ZombiController>().Stop();
+            if (elipsedTime <= Time.time)
+            {
+                gameController.DamagePlayer(Dameg);
+                attacking = true;
+                transform.position -= new Vector3(0.2f, 0.2f, 0);
+                GetComponent<ZombiController>().Stop();
+                elipsedTime = Time.time + attackRate;
+            }
         }else if (tag.Equals("Wall"))
         {
-            transform.position -= new Vector3(0.5f, 0.5f, 0);
-            int direction = Random.Range(-1,2);
-            for (int i = 0; i < 15; i++)
-            {
-                GetComponent<ZombiController>().AvoidWalls(direction);
-            }
-            GetComponent<ZombiController>().Stop();
+            
         }
     }
 }

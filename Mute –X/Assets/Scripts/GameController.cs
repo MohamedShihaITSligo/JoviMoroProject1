@@ -11,7 +11,7 @@ public class GameController: MonoBehaviour {
     public bool firstLevl = false;
     public GameObject pauseMenu;
     Vector3 startingPoint;
-    PlayerData data;
+    public PlayerData data;
     GameObject player;
     
 
@@ -114,11 +114,17 @@ public class GameController: MonoBehaviour {
 
     public void PlayerDetected()
     {
-        data.Detected = true;
+        if (data != null)
+        {
+            data.Detected = true;
+        }
     }
     public void PlayerUnDetected()
     {
-        data.Detected = false;
+        if (data != null)
+        {
+            data.Detected = false;
+        }
     }
 
     public bool IsPlayerDetected()

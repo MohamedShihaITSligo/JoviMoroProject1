@@ -10,6 +10,7 @@ TagManager:
   - HowToPlay
   - PauseMenu
   - MainMenu
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX

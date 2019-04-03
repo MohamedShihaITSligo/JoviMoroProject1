@@ -3,21 +3,24 @@ using System.Collections;
 
 public class Bullet : Damageable {
     public int Damage = 1;
-    // the bullet will be destroyed if it hit anything but the player
+    // the bullet will be destroyed if it hit anything 
     // if it hits the Enemy damage the enemy 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
-        Damageable damage = collision.GetComponent<Damageable>();
         if (tag.Equals("Enemy"))
         {
-            if (damage != null)
+            if (!gameObject.tag.EndsWith(tag))
             {
-                damage.Hit(Damage);
-                hits--;
+                Attack(collision);
             }
         }
-        else if (tag.Equals("Wall"))
+        else if (tag.Equals("Player"))
+        {
+            collision.GetComponent<PlayerData>().DamegPlayer(Damage);
+            hits--;
+        }
+        else if(tag.Equals("Wall"))
         {
             hits--;
         }
@@ -27,4 +30,12 @@ public class Bullet : Damageable {
         Damage = newDamage;
     }
     
+    void Attack(Collider2D collision) {
+        Damageable damage = collision.GetComponent<Damageable>();
+        if (damage != null)
+        {
+            damage.Hit(Damage);
+            hits--;
+        }
+    }
 }

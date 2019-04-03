@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour {
     public int MinDameg, MaxDameg;
     public bool attacking = false;
     protected GameController gameController;
-    protected int Dameg;
+    public int Dameg;
     
     private void Start()
     {
