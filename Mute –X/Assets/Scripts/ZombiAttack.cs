@@ -12,7 +12,7 @@ public class ZombiAttack : EnemyAttack
     {
         if (attacking)
         {
-            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) > 2)
+            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) >= 2)
             {
                 attacking = false;
             }
@@ -23,17 +23,31 @@ public class ZombiAttack : EnemyAttack
         string tag = collision.gameObject.tag;
         if (tag.Equals("Player"))
         {
+
             if (elipsedTime <= Time.time)
             {
                 gameController.DamagePlayer(Dameg);
                 attacking = true;
-                transform.position -= new Vector3(0.2f, 0.2f, 0);
-                GetComponent<ZombiController>().Stop();
                 elipsedTime = Time.time + attackRate;
+                
             }
-        }else if (tag.Equals("Wall"))
+            transform.position -=  new Vector3(
+                transform.up.x/3,
+                transform.up.y/3,
+                0
+                );
+            
+        }
+        else if (tag.Equals("Wall"))
         {
             
+            //Vector3Int tilePos = new Vector3Int(
+            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.x,
+            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.y,
+            //    (int)collision.gameObject.GetComponent<TilemapCollider2D>().bounds.center.z
+            //    );
+            //gameController.DestroyWall(tilePos);
+            //Debug.Log("Wall: "+tilePos);
         }
     }
 }

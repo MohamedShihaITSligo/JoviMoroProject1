@@ -53,4 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   firstLevl: 0
-  pauseMenu: {fileID: 1219020053614422, guid: 0d80926d5336ef74a8b22835dffe0eeb, type: 2}
+  walls: {fileID: 0}
+  pauseMenu: {fileID: 1743322019910768, guid: bbc7e3fc3459f0e49b8c3d421f0e3389, type: 2}
+  data: {fileID: 0}

@@ -74,4 +74,6 @@ public class ZombiController : FollowPath {
         body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
         body.angularVelocity = 0;
     }
+
+
 }

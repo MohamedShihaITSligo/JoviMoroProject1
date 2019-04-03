@@ -59,7 +59,7 @@ Material:
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.396
     - _GlowOffset: 0.174
-    - _GlowOuter: 0.606
+    - _GlowOuter: 0.937
     - _GlowPower: 0.606
     - _GradientScale: 11
     - _LightAngle: 3.1416
@@ -70,11 +70,11 @@ Material:
     - _OutlineSoftness: 0.336
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.206
+    - _OutlineWidth: 0.237
     - _PerspectiveFilter: 0
     - _Reflectivity: 10
     - _ScaleRatioA: 0.90909094
-    - _ScaleRatioB: 1.0281819
+    - _ScaleRatioB: 0.9254563
     - _ScaleRatioC: 1.0281819
     - _ScaleX: 1
     - _ScaleY: 1
@@ -100,7 +100,7 @@ Material:
     - _ClipRect: {r: -10000, g: -10000, b: 10000, a: 10000}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.079476684, g: 0.3584906, b: 0.19707265, a: 1}
+    - _GlowColor: {r: 0.027634397, g: 0.028301895, b: 0.027916439, a: 1}
     - _MaskCoord: {r: 0, g: 0, b: 100000, a: 100000}
     - _OutlineColor: {r: 0.03489124, g: 0.047169805, b: 0.022917407, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}

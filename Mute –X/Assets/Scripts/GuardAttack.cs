@@ -48,7 +48,7 @@ public class GuardAttack : EnemyAttack {
                                 position,
                                 Quaternion.identity);
         // Adds velocity to the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = transform.up * 2;
+        bullet.GetComponent<Rigidbody2D>().velocity = transform.up * 6;
         bullet.GetComponent<Bullet>().SetDamage(Dameg);
         bullet.tag = "BulletEnemy";
     }

@@ -11,6 +11,7 @@ TagManager:
   - PauseMenu
   - MainMenu
   - BulletEnemy
+  - EventSystem
   layers:
   - Default
   - TransparentFX

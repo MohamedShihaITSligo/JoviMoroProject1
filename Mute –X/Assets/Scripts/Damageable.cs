@@ -5,6 +5,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour {
 
 	public int hits;
+    
     virtual protected void Update()
     {
         if (hits <= 0)

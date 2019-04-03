@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
 public class GameController: MonoBehaviour {
@@ -9,6 +9,7 @@ public class GameController: MonoBehaviour {
 
     public bool paused = false;
     public bool firstLevl = false;
+    public Tilemap walls;
     public GameObject pauseMenu;
     Vector3 startingPoint;
     public PlayerData data;
@@ -17,10 +18,9 @@ public class GameController: MonoBehaviour {
 
 
     private void Start()
-    {
-        pauseMenu = Instantiate(pauseMenu);
+    { 
         DontDestroyOnLoad(gameObject);
-        firstLevl = true;
+        DontDestroyOnLoad(pauseMenu);
     }
 
     private void Update()
@@ -37,12 +37,12 @@ public class GameController: MonoBehaviour {
                 else Resume();
             }
             if (firstLevl)
-            {
+            { 
                 player = GameObject.FindGameObjectWithTag("Player");
                 data = player.GetComponent<PlayerData>();
                 startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
                 player.transform.position = startingPoint;
-                DontDestroyOnLoad(player);
+                //DontDestroyOnLoad(player);
                 firstLevl = false;
             }
             
@@ -100,16 +100,20 @@ public class GameController: MonoBehaviour {
     }
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(0);
         Resume();
         Destroy(gameObject);
+        Destroy(pauseMenu);
+        Destroy(GameObject.FindGameObjectWithTag("EventSystem").gameObject);
+        SceneManager.LoadScene(0);
+        
     }
 
     public void RestartLevel()
-    { 
-        player.transform.position = startingPoint;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    {
         Resume();
+        Destroy(player);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        firstLevl = true;
     }
 
     public void PlayerDetected()
@@ -140,5 +144,11 @@ public class GameController: MonoBehaviour {
     public void DamagePlayer(int amount)
     {
         data.DamegPlayer(amount);
+    }
+
+    public void DestroyWall(Vector3Int pos)
+    {
+        Vector3 touchPoint =  walls.GetComponent<TilemapCollider2D>().bounds.center;
+        walls.SetTile(pos,null);
     }
 }

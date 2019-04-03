@@ -17,7 +17,6 @@ public class PlayerData : MonoBehaviour {
     private void Start()
     {
         ResetPlayerData();
-        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {

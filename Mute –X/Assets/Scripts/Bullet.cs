@@ -3,8 +3,20 @@ using System.Collections;
 
 public class Bullet : Damageable {
     public int Damage = 1;
+    public float timer = 3f;
     // the bullet will be destroyed if it hit anything 
     // if it hits the Enemy damage the enemy 
+
+    protected override void Update()
+    {
+        base.Update();
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
