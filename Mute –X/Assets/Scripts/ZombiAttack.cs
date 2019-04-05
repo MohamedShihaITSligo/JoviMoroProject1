@@ -12,7 +12,7 @@ public class ZombiAttack : EnemyAttack
     {
         if (attacking)
         {
-            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) >= 2)
+            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) >= 1)
             {
                 attacking = false;
             }
@@ -29,27 +29,38 @@ public class ZombiAttack : EnemyAttack
                 gameController.DamagePlayer(Dameg);
                 attacking = true;
                 elipsedTime = Time.time + attackRate;
-                
             }
-            gameObject.GetComponent<Rigidbody2D>().MovePosition(transform.position - new Vector3(
-                transform.up.x / 3,
-                transform.up.y / 3,
-                0
-                ));
-            //transform.position -=  new Vector3(
-            //    transform.up.x/3,
-            //    transform.up.y/3,
-            //    0
-            //    );
-            
+            MoveBackOneStep();
+
         }
         else if (tag.Equals("Wall"))
         {
+            // move the zombie back after attacking 
             foreach (ContactPoint2D hit in collision.contacts)
             {
-                gameController.DestroyWall(hit.point);
+                gameController.DestroyWall(hit.point + (Vector2)transform.up);
             }
-            Debug.Log("Wall hit by:  "+gameObject.name);
+            MoveBackOneStep();
         }
     }
+
+    void MoveBackOneStep()
+    {
+        transform.position -= new Vector3(
+                transform.up.x / 3,
+                transform.up.y / 3,
+                0
+                );
+    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag.Equals("Wall"))
+    //    {
+    //        foreach (ContactPoint2D hit in collision.contacts)
+    //        {
+    //            gameController.DestroyWall(hit.point);
+    //        }
+    //        Debug.Log("Wall hit by:  " + gameObject.name);
+    //    }
+    //}
 }

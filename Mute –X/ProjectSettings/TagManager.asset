@@ -12,6 +12,7 @@ TagManager:
   - MainMenu
   - BulletEnemy
   - EventSystem
+  - LostMenu
   layers:
   - Default
   - TransparentFX

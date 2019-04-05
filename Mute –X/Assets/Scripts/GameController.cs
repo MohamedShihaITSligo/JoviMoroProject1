@@ -38,7 +38,7 @@ public class GameController: MonoBehaviour {
                 }
                 else Resume();
             }
-            if (data == null)
+            if (data == null || player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
                 data = player.GetComponent<PlayerData>();
@@ -46,7 +46,6 @@ public class GameController: MonoBehaviour {
                 player.transform.position = startingPoint;
                 //DontDestroyOnLoad(player);
                 walls = GameObject.Find("Walls").GetComponent<Tilemap>();
-                //firstLevl = false;
             }
         }
 
@@ -73,6 +72,7 @@ public class GameController: MonoBehaviour {
         pauseMenu.SetActive(true);
         paused = !paused;
     }
+
     public void Resume()
     {
         Time.timeScale = 1;
@@ -100,20 +100,20 @@ public class GameController: MonoBehaviour {
     {
         SceneManager.LoadScene(index);
     }
+
     public void BackToMainMenu()
     {
         Resume();
-        Destroy(gameObject);
         Destroy(pauseMenu);
         Destroy(GameObject.FindGameObjectWithTag("EventSystem").gameObject);
         SceneManager.LoadScene(0);
-        
+        Destroy(gameObject);
     }
 
     public void RestartLevel()
     {
         Resume();
-        //Destroy(player);
+        Destroy(player);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //firstLevl = true;
     }

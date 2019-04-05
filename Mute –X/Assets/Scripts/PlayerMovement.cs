@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
         data = GetComponent<PlayerData>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
                 (Vector2)transform.right * horizontal)+ 
                 ((Vector2)transform.up * vertical)
                 ) * data.Speed;
-
+            
             body.angularVelocity = 0;
         }
     }

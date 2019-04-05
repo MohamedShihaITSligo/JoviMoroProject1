@@ -46,4 +46,9 @@ public class PlayerData : MonoBehaviour {
             Debug.Log("Dameg: "+amount);
         }
     }
+
+    public void AddAmmo(int amount)
+    {
+        Ammo += amount;
+    }
 }
