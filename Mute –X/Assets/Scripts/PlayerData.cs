@@ -18,6 +18,7 @@ public class PlayerData : MonoBehaviour {
     {
         ResetPlayerData();
     }
+
     private void Update()
     {
         if (Xp > MAX_XP)
@@ -45,10 +46,20 @@ public class PlayerData : MonoBehaviour {
             Health -= amount;
             Debug.Log("Dameg: "+amount);
         }
+        if (Health < 0)
+        {
+            Health = 0;
+        }
+        if (Health > MaxHealth)
+        {
+            Health = MaxHealth;
+        }
     }
 
     public void AddAmmo(int amount)
     {
         Ammo += amount;
     }
+
+
 }

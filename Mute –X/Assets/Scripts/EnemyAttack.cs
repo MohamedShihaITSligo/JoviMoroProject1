@@ -13,4 +13,8 @@ public class EnemyAttack : MonoBehaviour {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         Dameg = Random.Range(MinDameg, MaxDameg);
     }
+    private void OnDestroy()
+    {
+        gameController.PlayerUnDetected();
+    }
 }

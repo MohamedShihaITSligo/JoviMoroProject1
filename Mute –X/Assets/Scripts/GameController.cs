@@ -8,13 +8,12 @@ public class GameController: MonoBehaviour {
 
 
     public bool paused = false;
-    //public bool firstLevl;
     public Tilemap walls;
     public GameObject pauseMenu;
     Vector3 startingPoint;
     public PlayerData data;
     GameObject player;
-    
+
 
 
     private void Start()
@@ -30,7 +29,7 @@ public class GameController: MonoBehaviour {
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index > 0 )
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && PlayerAlive())
             {
                 if (!paused)
                 {
@@ -40,12 +39,12 @@ public class GameController: MonoBehaviour {
             }
             if (data == null || player == null)
             {
+                walls = GameObject.Find("Walls").GetComponent<Tilemap>();
                 player = GameObject.FindGameObjectWithTag("Player");
                 data = player.GetComponent<PlayerData>();
                 startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
                 player.transform.position = startingPoint;
                 //DontDestroyOnLoad(player);
-                walls = GameObject.Find("Walls").GetComponent<Tilemap>();
             }
         }
 
@@ -135,7 +134,9 @@ public class GameController: MonoBehaviour {
 
     public bool IsPlayerDetected()
     {
-        return data.Detected;
+        if(data!=null)
+            return data.Detected;
+        return false;
     }
 
     public Transform PlayerLocation()
@@ -148,9 +149,17 @@ public class GameController: MonoBehaviour {
         data.DamegPlayer(amount);
     }
 
+    public Collider2D PlayerColider()
+    {
+        if(player!=null)
+         return player.GetComponent<Collider2D>();
+        return null;
+    }
     public void DestroyWall(Vector3 worldPosition)
     {
         Vector3Int cellPosition = walls.WorldToCell(worldPosition);
         walls.SetTile(cellPosition, null);
     }
+
+
 }
