@@ -52,7 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
-  firstLevl: 0
   walls: {fileID: 0}
   pauseMenu: {fileID: 1743322019910768, guid: bbc7e3fc3459f0e49b8c3d421f0e3389, type: 2}
+  lostMenu: {fileID: 0}
+  ammo: {fileID: 1654378161910474, guid: f3b590729961fae40a01019eaf18faaa, type: 2}
+  health: {fileID: 1750496024916938, guid: b6e1c4674a3f9be41af80e790eb957e4, type: 2}
   data: {fileID: 0}

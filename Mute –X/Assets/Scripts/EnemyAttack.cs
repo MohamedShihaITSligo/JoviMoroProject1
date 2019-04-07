@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
-    public int MinDameg, MaxDameg;
+    public int MinDamage, MaxDamage;
     public bool attacking = false;
     protected GameController gameController;
-    public int Dameg;
+    public int Damage;
     
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        Dameg = Random.Range(MinDameg, MaxDameg);
+        Damage = Random.Range(MinDamage, MaxDamage);
     }
+   
     private void OnDestroy()
     {
         gameController.PlayerUnDetected();

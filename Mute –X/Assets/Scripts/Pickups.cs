@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Pickups : MonoBehaviour {
 
-    public int amout;
-    public Sprite ammo, health;
+    public int amount;
+    public Sprite sprite;
     protected SpriteRenderer spriteRenderer;
     protected GameController gameController;
+    TextMesh text;
 
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        text = GetComponentInChildren<TextMesh>();
+    }
+
+    private void Update()
+    {
+        text.text = ""+amount;
+    }
+
+    public void SetAmount(int amount)
+    {
+        this.amount = amount;
     }
 }

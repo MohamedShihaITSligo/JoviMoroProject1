@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 60664378444131362}
   - component: {fileID: 95886290323238564}
   - component: {fileID: 114067150960627370}
-  - component: {fileID: 114117987395264630}
   - component: {fileID: 114260601953565278}
   - component: {fileID: 114578353671462400}
+  - component: {fileID: 114162206941993382}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Enemy
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: 0
   Ai: 1
---- !u!114 &114117987395264630
+--- !u!114 &114162206941993382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -272,10 +272,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1461867820851656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3940b09dde47e64f97db8c63c8f3b25, type: 3}
+  m_Script: {fileID: 11500000, guid: 20a95f4149a1e354b89e71997532ff8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 2
+  killedBy: 
+  DropPickup: 1
+  PickupType: 0
 --- !u!114 &114260601953565278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,12 +307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f955ccf4fa2764985dd79c6c5dc6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDameg: 20
-  MaxDameg: 30
+  MinDamage: 20
+  MaxDamage: 35
   attacking: 0
-  Dameg: 0
+  Damage: 0
   gun: {fileID: 1407400176982576}
   Bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
+  bulletSpeed: 12
   fireRate: 1
 --- !u!114 &114728414241775100
 MonoBehaviour:

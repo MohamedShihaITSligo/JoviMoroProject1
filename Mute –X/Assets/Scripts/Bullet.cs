@@ -3,15 +3,19 @@ using System.Collections;
 
 public class Bullet : Damageable {
     public int Damage = 1;
-    public float timer = 3f;
+    public float elipsedTime;
     // the bullet will be destroyed if it hit anything 
     // if it hits the Enemy damage the enemy 
+    private void Start()
+    {
+        elipsedTime = Time.time + 0.5f;
+    }
 
     protected override void Update()
     {
         base.Update();
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        
+        if (elipsedTime <= Time.time)
         {
             Destroy(gameObject);
         }
@@ -20,23 +24,26 @@ public class Bullet : Damageable {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
-        if (tag.Equals("Enemy"))
+        if (tag.Contains("Enemy"))
         {
             if (!gameObject.tag.EndsWith(tag))
             {
                 Attack(collision);
             }
         }
+
         else if (tag.Equals("Player"))
         {
             collision.GetComponent<PlayerData>().DamegPlayer(Damage);
             hits--;
         }
+
         else if(tag.Equals("Wall"))
         {
             hits--;
         }
     }
+
     public void SetDamage(int newDamage)
     {
         Damage = newDamage;
@@ -47,6 +54,7 @@ public class Bullet : Damageable {
         if (damage != null)
         {
             damage.Hit(Damage);
+            damage.killedBy = "Player";
             hits--;
         }
     }

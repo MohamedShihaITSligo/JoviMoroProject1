@@ -5,7 +5,7 @@ using UnityEngine;
 public class GuardAttack : EnemyAttack {
     public GameObject gun;
     public GameObject Bullet;
-    public float bulletSpeed = 6f;
+    public float bulletSpeed = 10f;
     public float fireRate = 1.5f;
     float elipsedTime;
 
@@ -50,7 +50,7 @@ public class GuardAttack : EnemyAttack {
                                 Quaternion.identity);
         // Adds velocity to the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
-        bullet.GetComponent<Bullet>().SetDamage(Dameg);
+        bullet.GetComponent<Bullet>().SetDamage(Damage);
         bullet.tag = "BulletEnemy";
     }
 }

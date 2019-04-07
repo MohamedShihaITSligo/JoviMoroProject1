@@ -7,7 +7,7 @@ public class Health : Pickups {
     protected override void Start()
     {
         base.Start();
-        spriteRenderer.sprite = health;
+        spriteRenderer.sprite = sprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +17,7 @@ public class Health : Pickups {
         {
             if (gameController.data.Health < 100)
             {
-                gameController.DamagePlayer(amout * -1);
+                gameController.DamagePlayer(amount * -1);
                 Destroy(gameObject);
             }
         }

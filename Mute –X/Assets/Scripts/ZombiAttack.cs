@@ -8,7 +8,7 @@ public class ZombiAttack : EnemyAttack
     public float attackRate = 2f;
     float elipsedTime;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (attacking)
         {
@@ -26,7 +26,7 @@ public class ZombiAttack : EnemyAttack
 
             if (elipsedTime <= Time.time)
             {
-                gameController.DamagePlayer(Dameg);
+                gameController.DamagePlayer(Damage);
                 attacking = true;
                 elipsedTime = Time.time + attackRate;
             }

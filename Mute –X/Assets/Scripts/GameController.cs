@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameController: MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class GameController: MonoBehaviour {
     public bool paused = false;
     public Tilemap walls;
     public GameObject pauseMenu;
+    public GameObject lostMenu;
+    public GameObject ammo , health;
     Vector3 startingPoint;
     public PlayerData data;
     GameObject player;
@@ -62,6 +65,25 @@ public class GameController: MonoBehaviour {
             case 4:
                 // write level 4 code here
                 break;
+        }
+    }
+
+    internal void DropPickup(Vector3 position, int amount, int type)
+    {
+        GameObject pickup = null;
+
+        if (type != 1 && type != 0)
+        {
+            type = UnityEngine.Random.Range(0, 2);
+        }
+        if (type == 0) pickup = ammo;
+        else if (type == 1) pickup = health;
+        
+        if (pickup != null)
+        {
+            pickup.GetComponent<Pickups>().SetAmount(amount);
+            Instantiate(pickup, position, Quaternion.identity);
+            Debug.Log("instan : " +amount);
         }
     }
 

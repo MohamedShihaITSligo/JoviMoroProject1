@@ -7,7 +7,7 @@ public class Ammo : Pickups {
     protected override void Start()
     {
         base.Start();
-        spriteRenderer.sprite = ammo;
+        spriteRenderer.sprite = sprite;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,7 +16,7 @@ public class Ammo : Pickups {
         if (collision.tag.Equals("Player"))
         {
 
-            gameController.data.AddAmmo(amout);
+            gameController.data.AddAmmo(amount);
             Destroy(gameObject);
             
         }
