@@ -39,6 +39,8 @@ public class Level4 : LevelController {
         {
             Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), gameController.PlayerColider(), false);
         }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

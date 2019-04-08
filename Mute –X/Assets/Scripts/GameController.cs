@@ -47,7 +47,14 @@ public class GameController: MonoBehaviour {
                 data = player.GetComponent<PlayerData>();
                 startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
                 player.transform.position = startingPoint;
+                Time.timeScale = 1;
                 //DontDestroyOnLoad(player);
+            }
+
+            if (!PlayerAlive())
+            {
+                lostMenu.SetActive(true);
+                Time.timeScale = 0;
             }
         }
 
@@ -133,10 +140,25 @@ public class GameController: MonoBehaviour {
 
     public void RestartLevel()
     {
+        
         Resume();
         Destroy(player);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //firstLevl = true;
+    }
+
+    public void ReTry()
+    {
+        // respawn from the last checkpoint 
+
+        paused = true;
+        lostMenu.SetActive(false);
+        Time.timeScale = 0;
+        Destroy(player);
+        Destroy(pauseMenu);
+        // for now just restart the level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Destroy(gameObject);
     }
 
     public void PlayerDetected()
