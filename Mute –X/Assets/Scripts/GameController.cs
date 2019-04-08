@@ -53,6 +53,7 @@ public class GameController: MonoBehaviour {
 
             if (!PlayerAlive())
             {
+                paused = true;
                 lostMenu.SetActive(true);
                 Time.timeScale = 0;
             }

@@ -11,7 +11,7 @@ public class GuardAttack : EnemyAttack {
 
     private void FixedUpdate()
     {
-        bool foundPlayer = GetComponent<GuardController>().detectedPlayer;
+        bool foundPlayer = GetComponent<FollowPath>().detectedPlayer;
         if (foundPlayer)
         {
             Shoot();

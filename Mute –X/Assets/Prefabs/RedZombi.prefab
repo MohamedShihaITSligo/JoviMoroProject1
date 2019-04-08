@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 3.8
   PickRandomStartNode: 1
   detectedPlayer: 0
   canMove: 1
@@ -316,6 +316,7 @@ MonoBehaviour:
   hits: 5
   killedBy: 
   DropPickup: 0
+  PickupType: 0
 --- !u!212 &212220150089840932
 SpriteRenderer:
   m_ObjectHideFlags: 1
