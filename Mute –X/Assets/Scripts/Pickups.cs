@@ -8,12 +8,14 @@ public class Pickups : MonoBehaviour {
     public Sprite sprite;
     protected SpriteRenderer spriteRenderer;
     protected GameController gameController;
+    protected PlayerData data;
     TextMesh text;
 
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        data = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         text = GetComponentInChildren<TextMesh>();
     }
 

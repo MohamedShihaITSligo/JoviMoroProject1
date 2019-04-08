@@ -31,7 +31,9 @@ public class PlayerData : MonoBehaviour {
                 Speed = MAX_SPEED;
             }
         }
+
     }
+
     public void ResetPlayerData()
     {
         Health = MaxHealth;

@@ -9,12 +9,12 @@ public class GameController: MonoBehaviour {
 
 
     public bool paused = false;
-    public Tilemap walls;
     public GameObject pauseMenu;
     public GameObject lostMenu;
     public GameObject ammo , health;
     Vector3 startingPoint;
-    public PlayerData data;
+    Tilemap walls;
+    PlayerData data;
     GameObject player;
 
 
@@ -91,7 +91,6 @@ public class GameController: MonoBehaviour {
         {
             pickup.GetComponent<Pickups>().SetAmount(amount);
             Instantiate(pickup, position, Quaternion.identity);
-            Debug.Log("instan : " +amount);
         }
     }
 
@@ -134,7 +133,7 @@ public class GameController: MonoBehaviour {
     {
         Resume();
         Destroy(pauseMenu);
-        Destroy(GameObject.FindGameObjectWithTag("EventSystem").gameObject);
+        //Destroy(GameObject.FindGameObjectWithTag("EventSystem").gameObject);
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }

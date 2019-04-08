@@ -15,7 +15,7 @@ public class Health : Pickups {
 
         if (collision.tag.Equals("Player"))
         {
-            if (gameController.data.Health < 100)
+            if (data.Health < 100)
             {
                 gameController.DamagePlayer(amount * -1);
                 Destroy(gameObject);

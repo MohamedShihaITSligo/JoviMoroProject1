@@ -9,6 +9,8 @@ public class PlayerAttack : MonoBehaviour
     public float yOffSet = 0.1f;
     public GameObject gun;
     public GameObject Bullet;
+    Aime aime;
+    Color aimeColor;
     GameController gameController;
     PlayerData data;
     bool shooting;
@@ -17,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     {
         data = gameObject.GetComponentInParent<PlayerData>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        aime = GameObject.Find("Aime").GetComponentInChildren<Aime>();
     }
 
     void Update()
@@ -26,12 +29,16 @@ public class PlayerAttack : MonoBehaviour
         {
             InstantiateBullet();
             data.Ammo--;
+            if (data.Ammo <= 0) aimeColor = Color.gray;
+            else if (data.Ammo < 10) aimeColor = Color.red;
+            else aimeColor = new Color(0,5,0,1);
             shooting = true;
         }
         else
         {
             shooting = false;
         }
+        aime.SetColour(aimeColor);
     }
 
     public bool IsShooting()
