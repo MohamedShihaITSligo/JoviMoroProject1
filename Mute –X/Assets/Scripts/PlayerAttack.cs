@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public float bulletVelocity = 10f;
-    public float xOffSet = 0.1f;
-    public float yOffSet = 0.1f;
+    public float fireRate = 2f;
     public GameObject gun;
     public GameObject Bullet;
+    float elipsedTime;
     Aime aime;
     Color aimeColor;
     GameController gameController;
@@ -27,17 +27,21 @@ public class PlayerAttack : MonoBehaviour
         // if the fire button is pressed and we have ammo shoOt !
         if (Input.GetButtonDown("Fire1")&&data.Ammo>0 && !gameController.paused)
         {
-            InstantiateBullet();
-            data.Ammo--;
-            if (data.Ammo <= 0) aimeColor = Color.gray;
-            else if (data.Ammo < 10) aimeColor = Color.red;
-            else aimeColor = new Color(0,5,0,1);
-            shooting = true;
+            if (elipsedTime <= Time.time)
+            {
+                elipsedTime = Time.time + fireRate;
+                InstantiateBullet();
+                data.Ammo--;
+                shooting = true;
+            }
         }
         else
         {
             shooting = false;
         }
+        if (data.Ammo <= 0) aimeColor = Color.gray;
+        else if (data.Ammo < 10) aimeColor = Color.red;
+        else aimeColor = new Color(0, 5, 0, 1);
         aime.SetColour(aimeColor);
     }
 
@@ -50,17 +54,20 @@ public class PlayerAttack : MonoBehaviour
     {
 
         Vector3 position = new Vector3(
-            gun.transform.position.x+xOffSet,
-            gun.transform.position.y+yOffSet,
+            gun.transform.position.x,
+            gun.transform.position.y,
             gun.transform.position.z
             );  
         // Creates the bullet locally
         GameObject bullet = (GameObject)Instantiate(
                                 Bullet,
                                 position,
-                                Quaternion.identity);
+                                Quaternion.identity
+                                );
         // Adds velocity to the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletVelocity;
+        bullet.transform.rotation = transform.rotation;
+
     }
 
 }

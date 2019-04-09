@@ -7,24 +7,24 @@ public class GuardAttack : EnemyAttack {
     public GameObject Bullet;
     public float bulletSpeed = 10f;
     public float fireRate = 1.5f;
-    float elipsedTime;
+    protected float elipsedTime;
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
-        bool foundPlayer = GetComponent<FollowPath>().detectedPlayer;
+        bool foundPlayer = GetComponentInChildren<VisionController>().CanPlayerBeSeen();
         if (foundPlayer)
         {
             Shoot();
         }
         else
         {
-            elipsedTime = Time.time + fireRate/2;
+            elipsedTime = Time.time + fireRate;
             attacking = false;
         }
 
     }
 
-    void Shoot()
+    virtual protected void Shoot()
     {
         attacking = true;
         if (elipsedTime <= Time.time)
@@ -50,6 +50,7 @@ public class GuardAttack : EnemyAttack {
                                 Quaternion.identity);
         // Adds velocity to the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+        bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Bullet>().SetDamage(Damage);
         bullet.tag = "BulletEnemy";
     }

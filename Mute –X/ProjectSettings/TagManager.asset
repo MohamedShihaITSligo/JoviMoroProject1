@@ -14,7 +14,7 @@ TagManager:
   - EventSystem
   - LostMenu
   - LevelController
-  - Boss
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

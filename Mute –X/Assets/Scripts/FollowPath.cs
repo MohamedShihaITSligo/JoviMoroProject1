@@ -29,6 +29,7 @@ public class FollowPath : MonoBehaviour {
         TeleportToNode();
     }
 
+
     virtual protected void Update()
     {
         if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance )

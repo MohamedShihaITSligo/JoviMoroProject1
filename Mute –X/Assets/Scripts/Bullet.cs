@@ -3,12 +3,13 @@ using System.Collections;
 
 public class Bullet : Damageable {
     public int Damage = 1;
+    public float timer= 0.5f;
     public float elipsedTime;
     // the bullet will be destroyed if it hit anything 
     // if it hits the Enemy damage the enemy 
     private void Start()
     {
-        elipsedTime = Time.time + 0.5f;
+        elipsedTime = Time.time + timer;
     }
 
     protected override void Update()

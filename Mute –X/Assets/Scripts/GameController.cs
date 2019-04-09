@@ -140,7 +140,6 @@ public class GameController: MonoBehaviour {
 
     public void RestartLevel()
     {
-        
         Resume();
         Destroy(player);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -150,15 +149,14 @@ public class GameController: MonoBehaviour {
     public void ReTry()
     {
         // respawn from the last checkpoint 
-
-        paused = true;
+        paused = false;
         lostMenu.SetActive(false);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        // for now just restart the level
         Destroy(player);
         Destroy(pauseMenu);
-        // for now just restart the level
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void PlayerDetected()
@@ -168,6 +166,7 @@ public class GameController: MonoBehaviour {
             data.Detected = true;
         }
     }
+
     public void PlayerUnDetected()
     {
         if (data != null)
@@ -185,7 +184,9 @@ public class GameController: MonoBehaviour {
 
     public Transform PlayerLocation()
     {
-        return player.transform;
+        if(player != null)
+            return player.transform;
+        else return null;
     }
 
     public void DamagePlayer(int amount)
@@ -199,6 +200,7 @@ public class GameController: MonoBehaviour {
          return player.GetComponent<Collider2D>();
         return null;
     }
+
     public void DestroyWall(Vector3 worldPosition)
     {
         Vector3Int cellPosition = walls.WorldToCell(worldPosition);

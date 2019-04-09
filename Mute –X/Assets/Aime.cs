@@ -8,12 +8,12 @@ public class Aime : MonoBehaviour {
     //public int minDistance;
     public Sprite shooting, notShooting;
     SpriteRenderer sprite;
-    Vector3 playerPosition;
+    //Vector3 playerPosition;
 
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        //playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
 
     }
 

@@ -32,7 +32,7 @@ public class VisionController : MonoBehaviour {
     }
 
 
-    bool CanPlayerBeSeen()
+    public bool CanPlayerBeSeen()
     {
         // we only need to check visibility if the player is within the enemy's visual range
         if (playerInRange)
@@ -102,7 +102,7 @@ public class VisionController : MonoBehaviour {
         foreach (RaycastHit2D hit in hits)
         {
             // ignore the enemy's own colliders (and other enemies)
-            if (hit.transform.tag.Equals("Enemy"))
+            if (hit.transform.tag.EndsWith("Enemy"))
                 continue;
 
             // if anything other than the player is hit then it must be between the player and the enemy's eyes
