@@ -26,7 +26,6 @@ public class EnemyDamage : Damageable {
                     if (Damage <= 0) Damage = 5;
                     int amount = Damage / 3;
                     if (amount < 5) amount = 5;
-                    Debug.Log("Damage amount: "+amount);
                     gameController.DropPickup(transform.position, amount, PickupType);
                 }
                 Destroy(gameObject);

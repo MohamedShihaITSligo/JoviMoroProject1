@@ -46,7 +46,6 @@ public class PlayerData : MonoBehaviour {
         if (Health > 0)
         {
             Health -= amount;
-            Debug.Log("Dameg: "+amount);
         }
         if (Health < 0)
         {

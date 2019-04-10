@@ -314,7 +314,7 @@ MonoBehaviour:
   gun: {fileID: 1407400176982576}
   Bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
   bulletSpeed: 12
-  fireRate: 1
+  fireRate: 0.6
 --- !u!114 &114728414241775100
 MonoBehaviour:
   m_ObjectHideFlags: 1

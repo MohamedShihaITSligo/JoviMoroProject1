@@ -56,7 +56,7 @@ public class BossAttack : EnemyAttack {
             if (superElipsedTime <= Time.time)
             {
                 InstantiateBullet(3);
-                bulletSpeed += 0.01f;
+                bulletSpeed += 0.1f;
                 superElipsedTime = Time.time + superFireRate;
             }
         }
@@ -65,7 +65,7 @@ public class BossAttack : EnemyAttack {
     
 
     void InstantiateBullet(float timer)
-    {
+    {// set the position
         Vector3 position = new Vector3(
             gun.transform.position.x,
             gun.transform.position.y,
@@ -78,7 +78,9 @@ public class BossAttack : EnemyAttack {
                                 Bullet,
                                 position,
                                 Quaternion.identity);
-        // Adds velocity to the bullet
+        // change the bullet damage to the boss damage 
+        // change the tag
+        // add velocity
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Bullet>().SetDamage(Damage);

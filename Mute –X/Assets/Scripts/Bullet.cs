@@ -25,7 +25,7 @@ public class Bullet : Damageable {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
-        if (tag.Contains("Enemy"))
+        if (tag.EndsWith("Enemy"))
         {
             if (!gameObject.tag.EndsWith(tag))
             {

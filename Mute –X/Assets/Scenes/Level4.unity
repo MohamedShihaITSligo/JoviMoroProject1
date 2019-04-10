@@ -1321,12 +1321,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2505c96ebc1cc541a421290db80fb85, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 2.56}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1339,8 +1339,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 139503385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.014, y: 0.143, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.13, z: 1}
+  m_LocalPosition: {x: 0.099, y: 0.222, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.6444896, z: 1}
   m_Children: []
   m_Father: {fileID: 734029425}
   m_RootOrder: 2
@@ -5334,11 +5334,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4512955429244950, guid: ba7fca67a42a3b444aecb1732b02e180, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -64.91
+      value: 4.35
       objectReference: {fileID: 0}
     - target: {fileID: 4512955429244950, guid: ba7fca67a42a3b444aecb1732b02e180, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.87
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 4512955429244950, guid: ba7fca67a42a3b444aecb1732b02e180, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8177,7 +8177,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 734029416}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eb739e53e4f9e342906e84810980292, type: 3}
   m_Name: 
@@ -8192,7 +8192,7 @@ Animator:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 734029416}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0a9080382e6e1444eb542e7485f88956, type: 2}
   m_CullingMode: 0
@@ -8294,7 +8294,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.42, y: 0.26}
+    oldSize: {x: 0.43, y: 0.49}
     newSize: {x: 0.33, y: 0.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8302,27 +8302,30 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0077112913, y: 0.14635563}
-      - {x: -0.11889434, y: 0.056753695}
-      - {x: -0.18542501, y: 0.04061061}
-      - {x: -0.20885956, y: -0.0005598068}
+    - - {x: -0.0077114105, y: 0.047771454}
+      - {x: -0.08989906, y: -0.0012373924}
+      - {x: -0.15353012, y: -0.011580944}
+      - {x: -0.20016098, y: -0.038253546}
       - {x: -0.21051902, y: -0.05904001}
-      - {x: -0.15033096, y: -0.09075576}
-      - {x: -0.12283647, y: -0.09450209}
-      - {x: -0.06360257, y: -0.12916923}
-      - {x: -0.013108909, y: -0.13159728}
-      - {x: 0.007577181, y: -0.12949908}
-      - {x: 0.03249204, y: -0.12149656}
-      - {x: 0.11049014, y: -0.088284016}
-      - {x: 0.12325722, y: -0.07241809}
-      - {x: 0.13373595, y: -0.06979835}
-      - {x: 0.143763, y: -0.06495881}
-      - {x: 0.18804455, y: -0.05410713}
+      - {x: -0.21022415, y: -0.14227676}
+      - {x: -0.15613174, y: -0.19803834}
+      - {x: -0.10833931, y: -0.19308615}
+      - {x: -0.075201035, y: -0.20745659}
+      - {x: 0.0042877197, y: -0.22728181}
+      - {x: 0.07426643, y: -0.20198703}
+      - {x: 0.09918213, y: -0.19108534}
+      - {x: 0.09309387, y: -0.19846606}
+      - {x: 0.091362, y: -0.19709802}
+      - {x: 0.14533424, y: -0.18867922}
+      - {x: 0.16985893, y: -0.18093991}
+      - {x: 0.21994019, y: -0.14979148}
       - {x: 0.21356863, y: -0.026933432}
-      - {x: 0.17849624, y: 0.011541247}
-      - {x: 0.11525476, y: 0.043204963}
-      - {x: 0.08056009, y: 0.049471438}
-      - {x: 0.07499999, y: 0.08906698}
+      - {x: 0.21039009, y: 0.026038647}
+      - {x: 0.17324448, y: 0.112793446}
+      - {x: 0.13269806, y: 0.08969307}
+      - {x: 0.13604546, y: 0.09335852}
+      - {x: 0.04389572, y: 0.05948448}
+      - {x: 0.04310608, y: 0.039774895}
 --- !u!212 &734029424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8359,8 +8362,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8742c7145fabd8a4789fcd738a400c09, type: 3}
-  m_Color: {r: 0, g: 0.5566038, b: 0.03052022, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1bd5e31536419cf4fb42459eefbe4363, type: 3}
+  m_Color: {r: 0.8018868, g: 0.49550554, b: 0.5139835, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -14059,6 +14062,21 @@ Prefab:
       propertyPath: path
       value: 
       objectReference: {fileID: 1545206714}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: Idle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: StayIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abcfd2910870abc4bad1d60f48dad601, type: 2}
   m_IsPrefabParent: 0
@@ -15917,6 +15935,21 @@ Prefab:
       propertyPath: path
       value: 
       objectReference: {fileID: 334267767}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: StayIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: Idle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114319209009625500, guid: abcfd2910870abc4bad1d60f48dad601,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abcfd2910870abc4bad1d60f48dad601, type: 2}
   m_IsPrefabParent: 0
