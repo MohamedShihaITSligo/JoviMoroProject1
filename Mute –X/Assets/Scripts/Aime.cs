@@ -8,12 +8,13 @@ public class Aime : MonoBehaviour {
     //public int minDistance;
     public Sprite shooting, notShooting;
     SpriteRenderer sprite;
+    GameController gameController;
     //Vector3 playerPosition;
 
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        //playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
     }
 
@@ -21,8 +22,11 @@ public class Aime : MonoBehaviour {
     {
 
         //float distance = Vector2.Distance(playerPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        Vector2 tempPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = tempPos;
+        if (!gameController.paused)
+        {
+            Vector2 tempPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = tempPos;
+        }
         //Debug.Log(distance);
 
     }

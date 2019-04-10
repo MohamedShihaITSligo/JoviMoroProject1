@@ -23,6 +23,7 @@ public class GameController: MonoBehaviour {
     { 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(pauseMenu);
+        lostMenu.SetActive(false);
     }
 
     private void Update()
