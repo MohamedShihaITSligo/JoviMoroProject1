@@ -11,10 +11,10 @@ public class Level4 : LevelController {
     {
         LevelNumber = 4;
         Objectives = new Objective[3];
-        Objectives[0] = new Objective("1- Kill all the zombies !! if you can");
-        Objectives[1] = new Objective("2- Reach Boss room without being followed by zombies or detected");
+        Objectives[0] = new Objective("1- Kill 5 zombies and All the guards");
+        Objectives[1] = new Objective("2- Reach Boss room without being followed by zombies ");
         bossRoom = new Objective("Complete mission 1 or 2 to unlock mission  3");
-        Objectives[2] = new Objective("3- Kill Magnus ");
+        Objectives[2] = new Objective("3- Kill Magnus (the Big Boss)");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
