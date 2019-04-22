@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -92,6 +92,7 @@ MonoBehaviour:
   hits: 1
   killedBy: 
   Damage: 1
+  timer: 0.4
   elipsedTime: 0
 --- !u!212 &212815756971588974
 SpriteRenderer:
