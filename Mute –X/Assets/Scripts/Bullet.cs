@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Bullet : Damageable {
-    public int Damage = 1;
+    public float Damage = 1;
     public float timer= 0.5f;
     public float elipsedTime;
     // the bullet will be destroyed if it hit anything 
@@ -45,7 +45,7 @@ public class Bullet : Damageable {
         }
     }
 
-    public void SetDamage(int newDamage)
+    public void SetDamage(float newDamage)
     {
         Damage = newDamage;
     }

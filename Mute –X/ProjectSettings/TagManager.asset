@@ -15,6 +15,7 @@ TagManager:
   - LostMenu
   - LevelController
   - BossEnemy
+  - Weapon
   layers:
   - Default
   - TransparentFX

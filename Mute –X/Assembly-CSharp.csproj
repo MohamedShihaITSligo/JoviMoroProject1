@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\GuardAttack.cs" />
     <Compile Include="Assets\Scripts\GuardController.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\HealthUI.cs" />
     <Compile Include="Assets\Scripts\Level4.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Scripts\MainMenuController.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\VisionController.cs" />
+    <Compile Include="Assets\Scripts\Weapons.cs" />
     <Compile Include="Assets\Scripts\ZombiAttack.cs" />
     <Compile Include="Assets\Scripts\ZombiController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

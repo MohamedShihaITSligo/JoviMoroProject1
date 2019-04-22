@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour {
 
-	public int hits;
+	public float hits;
     public string killedBy;
 
     virtual protected void Update()
@@ -17,6 +17,6 @@ public class Damageable : MonoBehaviour {
 
     public void Hit(float amount)
     {
-        hits -= (int)amount;
+        hits -= amount;
     }
 }

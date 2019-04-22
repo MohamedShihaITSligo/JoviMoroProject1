@@ -11,10 +11,11 @@ public class BossAttack : EnemyAttack {
     public float superFireRate = 0.2f;
     public float reloadTime = 3f;
     public bool reloading = false;
+    public bool super = false;
     float elipsedTime;
     float superElipsedTime;
-    public int ammo;
-    const int FULL_MAGAZIN = 10;
+    public int magazine = 10;
+    const int FULL_MAGAZINE = 10;
 
 
     virtual protected void FixedUpdate()
@@ -35,31 +36,38 @@ public class BossAttack : EnemyAttack {
     virtual protected void Shoot()
     {
         attacking = true;
-        if (elipsedTime <= Time.time)
+        if (!super && elipsedTime <= Time.time && magazine > 0)
         {
             reloading = false;
-            bulletSpeed = 10f;
+            bulletSpeed = 15f;
             InstantiateBullet(0.5f);
-            ammo--;
+            magazine--;
             elipsedTime = Time.time + fireRate;
+            if (magazine <= 0)
+            {
+                super = true;
+                magazine = FULL_MAGAZINE;
+            }
         }
 
-        if (ammo <= 0)
-        {
-            reloading = true;
-            elipsedTime = Time.time + reloadTime;
-            ammo = FULL_MAGAZIN;
-        }
-
-        if (reloading)
+        if (super)
         {
             if (superElipsedTime <= Time.time)
             {
                 InstantiateBullet(3);
+                magazine--;
                 bulletSpeed += 0.1f;
                 superElipsedTime = Time.time + superFireRate;
+                if (magazine <= 0)
+                {
+                    super = false;
+                    reloading = true;
+                    elipsedTime = Time.time + reloadTime;
+                    magazine = FULL_MAGAZINE;
+                }
             }
         }
+
     }
 
     

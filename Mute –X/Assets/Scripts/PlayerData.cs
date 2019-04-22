@@ -41,11 +41,11 @@ public class PlayerData : MonoBehaviour {
         Xp = 0;
     }
 
-    public void DamegPlayer(int amount)
+    public void DamegPlayer(float amount)
     {
         if (Health > 0)
         {
-            Health -= amount;
+            Health -= (int)amount;
         }
         if (Health < 0)
         {
