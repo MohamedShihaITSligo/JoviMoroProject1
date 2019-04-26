@@ -29,16 +29,14 @@ public class Bullet : Damageable {
         {
             if (!gameObject.tag.EndsWith(tag))
             {
-                Attack(collision);
+                DealDamage(collision);
             }
         }
-
         else if (tag.Equals("Player"))
         {
             collision.GetComponent<PlayerData>().DamegPlayer(Damage);
             hits--;
         }
-
         else if(tag.Equals("Wall"))
         {
             hits--;
@@ -50,12 +48,11 @@ public class Bullet : Damageable {
         Damage = newDamage;
     }
     
-    void Attack(Collider2D collision) {
+    void DealDamage(Collider2D collision) {
         Damageable damage = collision.GetComponent<Damageable>();
         if (damage != null)
         {
-            damage.Hit(Damage);
-            damage.killedBy = "Player";
+            damage.Hit(Damage, collision.gameObject.tag);
             hits--;
         }
     }

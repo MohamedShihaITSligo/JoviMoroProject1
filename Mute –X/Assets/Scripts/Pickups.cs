@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickups : MonoBehaviour {
 
-    public int amount;
+    public int Amount;
     public Sprite sprite;
     protected SpriteRenderer spriteRenderer;
     protected GameController gameController;
@@ -21,11 +21,11 @@ public class Pickups : MonoBehaviour {
 
     private void Update()
     {
-        text.text = ""+amount;
+        text.text = ""+Amount;
     }
 
     public void SetAmount(int amount)
     {
-        this.amount = amount;
+        Amount = amount;
     }
 }

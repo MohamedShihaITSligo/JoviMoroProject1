@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     Weapons gunData;
     bool shooting;
     bool reloading;
+	AudioSource audio;
 
     private void Start()
     {
@@ -23,7 +24,9 @@ public class PlayerAttack : MonoBehaviour
         gunData = gun.GetComponentInParent<Weapons>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         aime = GameObject.Find("Aime").GetComponentInChildren<Aime>();
-    }
+		audio = GetComponent<AudioSource>();
+
+	}
 
     void Update()
     {
@@ -93,11 +96,12 @@ public class PlayerAttack : MonoBehaviour
 
     void InstantiateBullet()
     {
+
         gun.transform.rotation = Quaternion.LookRotation(Vector3.forward, aime.transform.position - gun.transform.position);
         Vector3 position = new Vector3(
             gun.transform.position.x,
             gun.transform.position.y,
-            gun.transform.position.z
+            gun.transform.position.z+1
             );
         // Creates the bullet locally
         GameObject bullet = (GameObject)Instantiate(
@@ -108,6 +112,7 @@ public class PlayerAttack : MonoBehaviour
         // Adds velocity to the bullet
         //bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * gunData.BulletVelocity;
+		audio.Play();
         bullet.GetComponent<Bullet>().SetDamage(gunData.Damage);
         bullet.GetComponent<Bullet>().timer = gunData.BulletTime;
         //bullet.transform.up = (Vector2)aime.transform.position - bullet.GetComponent<Rigidbody2D>().position;

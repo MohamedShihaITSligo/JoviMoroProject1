@@ -15,8 +15,12 @@ public class Damageable : MonoBehaviour {
         }
     }
 
-    public void Hit(float amount)
-    {
-        hits -= amount;
-    }
+	public void Hit(float amount, string tag)
+	{
+		hits -= amount;
+		if (hits <= 0)
+		{
+			killedBy = tag;
+		}
+	}
 }

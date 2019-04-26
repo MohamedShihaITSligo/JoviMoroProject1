@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossController : GuardController {
 
+	
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -21,5 +22,8 @@ public class BossController : GuardController {
                 canMove = true;
             }
         }
+		
     }
+
+	
 }

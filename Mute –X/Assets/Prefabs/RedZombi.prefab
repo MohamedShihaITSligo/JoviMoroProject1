@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114489765073180002}
   - component: {fileID: 114835281695980152}
   - component: {fileID: 114852374950901178}
+  - component: {fileID: 82736123379855050}
   m_Layer: 0
   m_Name: RedZombi
   m_TagString: Enemy
@@ -73,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1990672875416038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 4.68, z: 0}
+  m_LocalPosition: {x: -0.4, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4766528083970868}
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850437832200844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53, y: 6.98, z: -1}
+  m_LocalPosition: {x: -39.379997, y: -21.619999, z: -1}
   m_LocalScale: {x: 0.4, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4420338441116554}
@@ -141,7 +142,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.484159
+  m_Radius: 4
 --- !u!60 &60963706599083140
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -220,6 +221,101 @@ PolygonCollider2D:
       - {x: 0.22, y: -0.96}
       - {x: 0.41, y: -0.91999996}
       - {x: 0.53, y: -0.84999996}
+--- !u!82 &82736123379855050
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850437832200844}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 72738be086d0f41fbaa2959fa0b2ffa4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95525430773148482
 Animator:
   serializedVersion: 3
@@ -255,8 +351,8 @@ MonoBehaviour:
   detectedPlayer: 0
   canMove: 1
   following: 0
-  Idle: 1
-  StayIdle: 1
+  Idle: 0
+  StayIdle: 0
 --- !u!114 &114530995332226288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,8 +380,8 @@ MonoBehaviour:
   playerInRange: 0
   sprit: {fileID: 212220150089840932}
   lineOfSightEnd: {fileID: 4420338441116554}
-  sightDis: 3
-  visionAngle: 180
+  sightDis: 5
+  visionAngle: 200
 --- !u!114 &114835281695980152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +397,7 @@ MonoBehaviour:
   MaxDamage: 25
   attacking: 0
   Damage: 0
+  Audio: {fileID: 0}
   attackRate: 1
 --- !u!114 &114852374950901178
 MonoBehaviour:
@@ -315,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hits: 5
   killedBy: 
-  DropPickup: 0
+  DropPickup: 1
   PickupType: 0
 --- !u!212 &212220150089840932
 SpriteRenderer:

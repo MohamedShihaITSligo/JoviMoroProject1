@@ -27,6 +27,7 @@ public class ZombiAttack : EnemyAttack
             if (elipsedTime <= Time.time)
             {
                 gameController.DamagePlayer(Damage);
+				Audio.Play();
                 attacking = true;
                 elipsedTime = Time.time + attackRate;
             }
@@ -47,8 +48,8 @@ public class ZombiAttack : EnemyAttack
     void MoveBackOneStep()
     {
         transform.position -= new Vector3(
-                transform.up.x / 3,
-                transform.up.y / 3,
+                transform.up.x / 2,
+                transform.up.y / 2,
                 0
                 );
     }

@@ -21,8 +21,8 @@ public class GameController: MonoBehaviour {
 
     private void Start()
     { 
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(pauseMenu);
+       // DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(pauseMenu);
         lostMenu.SetActive(false);
     }
 
@@ -55,7 +55,8 @@ public class GameController: MonoBehaviour {
             if (!PlayerAlive())
             {
                 paused = true;
-                lostMenu.SetActive(true);
+				if(lostMenu != null)
+					lostMenu.SetActive(true);
                 Time.timeScale = 0;
             }
         }

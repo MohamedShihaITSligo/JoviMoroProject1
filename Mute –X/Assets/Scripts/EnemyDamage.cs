@@ -6,7 +6,6 @@ public class EnemyDamage : Damageable {
     public bool DropPickup;
     public int PickupType;
     int Damage;
-
     GameController gameController;
 
     private void Start()
@@ -15,22 +14,18 @@ public class EnemyDamage : Damageable {
     }
 
     protected override void Update()
-    {
-        if (killedBy.Equals("Player"))
-        {
-            Damage = GetComponent<EnemyAttack>().Damage;
+    { 
             if (hits <= 0)
             {
                 if (DropPickup)
                 {
-                    if (Damage <= 0) Damage = 5;
+					Damage = GetComponent<EnemyAttack>().Damage;
+					if (Damage <= 0) Damage = 5;
                     int amount = Damage / 3;
-                    if (amount < 5) amount = 5;
+                    if (amount < 10) amount = 10;
                     gameController.DropPickup(transform.position, amount, PickupType);
                 }
                 Destroy(gameObject);
             }
-        }
-        
     }
 }

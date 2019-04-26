@@ -17,7 +17,7 @@ public class Health : Pickups {
         {
             if (data.Health < 100)
             {
-                gameController.DamagePlayer(amount * -1);
+                gameController.DamagePlayer(Amount * -1);
                 Destroy(gameObject);
             }
         }

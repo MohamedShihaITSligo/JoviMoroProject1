@@ -48,8 +48,10 @@ public class GuardAttack : EnemyAttack {
                                 Bullet,
                                 position,
                                 Quaternion.identity);
-        // Adds velocity to the bullet
-        bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+		// Adds velocity to the bullet
+		Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+		Audio.Play();
         bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Bullet>().SetDamage(Damage);
         bullet.tag = "BulletEnemy";

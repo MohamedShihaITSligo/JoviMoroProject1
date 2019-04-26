@@ -16,6 +16,8 @@ public class BossAttack : EnemyAttack {
     float superElipsedTime;
     public int magazine = 10;
     const int FULL_MAGAZINE = 10;
+	
+	
 
 
     virtual protected void FixedUpdate()
@@ -35,12 +37,13 @@ public class BossAttack : EnemyAttack {
 
     virtual protected void Shoot()
     {
-        attacking = true;
+        
         if (!super && elipsedTime <= Time.time && magazine > 0)
         {
+			attacking = true;
             reloading = false;
             bulletSpeed = 15f;
-            InstantiateBullet(0.5f);
+			InstantiateBullet(0.5f);
             magazine--;
             elipsedTime = Time.time + fireRate;
             if (magazine <= 0)
@@ -55,6 +58,7 @@ public class BossAttack : EnemyAttack {
             if (superElipsedTime <= Time.time)
             {
                 InstantiateBullet(3);
+				
                 magazine--;
                 bulletSpeed += 0.1f;
                 superElipsedTime = Time.time + superFireRate;
@@ -62,6 +66,7 @@ public class BossAttack : EnemyAttack {
                 {
                     super = false;
                     reloading = true;
+					attacking = false;
                     elipsedTime = Time.time + reloadTime;
                     magazine = FULL_MAGAZINE;
                 }
@@ -85,12 +90,10 @@ public class BossAttack : EnemyAttack {
         GameObject bullet = (GameObject)Instantiate(
                                 Bullet,
                                 position,
-                                Quaternion.identity);
-        // change the bullet damage to the boss damage 
-        // change the tag
-        // add velocity
-        bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
-        bullet.transform.rotation = transform.rotation;
+								gun.transform.rotation);
+		Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(),true);
+		Audio.Play();
+		bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         bullet.GetComponent<Bullet>().SetDamage(Damage);
         bullet.GetComponent<Bullet>().timer = timer;
         bullet.tag = "BulletEnemy";

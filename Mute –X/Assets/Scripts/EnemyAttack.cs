@@ -7,12 +7,14 @@ public class EnemyAttack : MonoBehaviour {
     public bool attacking = false;
     protected GameController gameController;
     public int Damage;
-    
-    private void Start()
+	public AudioSource Audio;
+
+	private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         Damage = Random.Range(MinDamage, MaxDamage);
-    }
+		Audio = GetComponent<AudioSource>();
+	}
    
     private void OnDestroy()
     {

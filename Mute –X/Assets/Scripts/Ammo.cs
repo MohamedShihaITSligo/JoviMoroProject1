@@ -16,7 +16,7 @@ public class Ammo : Pickups {
         if (collision.tag.Equals("Player"))
         {
 
-            data.AddAmmo(amount);
+            data.AddAmmo(Amount);
             Destroy(gameObject);
         }
     }

@@ -19,7 +19,7 @@ public class AnimationController : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+	void FixedUpdate()
     {
         CheckState();
         if (state != previousState)
@@ -33,7 +33,7 @@ public class AnimationController : MonoBehaviour {
         return Input.GetButton("Horizontal") || Input.GetButton("Vertical");
     }
 
-    void CheckState()
+	public virtual void CheckState()
     {
         if (Player)
         {
@@ -53,7 +53,7 @@ public class AnimationController : MonoBehaviour {
         {
             if (GetComponent<EnemyAttack>().attacking)
             {
-                SetState(State.Atacking);
+				SetState(State.Atacking);
             }
             else if (GetComponent<FollowPath>().canMove || GetComponent<FollowPath>().following)
             {
@@ -67,9 +67,11 @@ public class AnimationController : MonoBehaviour {
     }
 
 
-    void SetState(State newState)
+    public void SetState(State newState)
     {
         previousState = state;
         state = newState;
     }
+
+
 }
