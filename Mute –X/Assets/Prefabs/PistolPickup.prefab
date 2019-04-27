@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114661965368650830}
   m_Layer: 0
   m_Name: PistolPickup
-  m_TagString: Weapon
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1990509337460514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.01, y: 4.63, z: 0}
+  m_LocalPosition: {x: 3.74, y: 4.82, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009133056, y: 0.02283255}
+  m_Offset: {x: -0.0045873336, y: 0.03655307}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18335062, y: 0.44820726}
+  m_Size: {x: 0.101028286, y: 0.18294653}
   m_EdgeRadius: 0
 --- !u!114 &114661965368650830
 MonoBehaviour:
@@ -78,14 +78,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5943f384420359b47bbfff0d9dea1bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Amount: 0
+  Type: 3
+  Sprite: {fileID: 21300000, guid: a485e0e995dc543019de001bc7669f1c, type: 3}
+  gameController: {fileID: 0}
+  spriteRenderer: {fileID: 212455983474716358}
   FULL_MAGAZINE: 12
   Magazine: 12
   Damage: 1
   ReloadRate: 1
   FireRate: 0.5
-  BulletTime: 0.3
-  BulletVelocity: 9
-  sprite: {fileID: 21300000, guid: a485e0e995dc543019de001bc7669f1c, type: 3}
+  BulletTime: 0.4
+  BulletVelocity: 10
   bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!212 &212455983474716358
 SpriteRenderer:

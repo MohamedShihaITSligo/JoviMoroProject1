@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapons : MonoBehaviour {
+public class Weapons : Pickups {
 
     public int FULL_MAGAZINE = 9;
     public int Magazine;
@@ -11,15 +11,9 @@ public class Weapons : MonoBehaviour {
     public float FireRate;
     public float BulletTime;
     public float BulletVelocity;
-    public Sprite sprite;
     public GameObject bullet;
-    SpriteRenderer spritRenderer;
-
-    private void Start()
-    {
-        spritRenderer = GetComponent<SpriteRenderer>();
-    }
-    public void Replace(GameObject Weapon)
+    
+    public void Copy(GameObject Weapon)
     {
         Weapons newWeapon = Weapon.GetComponent<Weapons>();
         FULL_MAGAZINE = newWeapon.FULL_MAGAZINE;
@@ -29,8 +23,10 @@ public class Weapons : MonoBehaviour {
         FireRate = newWeapon.FireRate;
         BulletTime = newWeapon.BulletTime;
         BulletVelocity = newWeapon.BulletVelocity;
-        spritRenderer.sprite = newWeapon.sprite;
+        Sprite = newWeapon.Sprite;
         bullet = newWeapon.bullet;
+        Type = newWeapon.Type;
+        spriteRenderer.sprite = Sprite;
     }
 }
 

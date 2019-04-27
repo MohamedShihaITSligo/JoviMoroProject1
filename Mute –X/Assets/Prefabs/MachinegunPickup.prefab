@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114366739906855512}
   m_Layer: 0
   m_Name: MachinegunPickup
-  m_TagString: Weapon
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570242795914178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.66, y: 3.53, z: 0}
+  m_LocalPosition: {x: -2.3022156, y: 1.4341053, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,14 +78,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5943f384420359b47bbfff0d9dea1bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Amount: 0
+  Type: 4
+  Sprite: {fileID: 21300000, guid: 0b9470a6ae7024979828fb99e5acf2eb, type: 3}
+  gameController: {fileID: 0}
+  spriteRenderer: {fileID: 212051117893641908}
   FULL_MAGAZINE: 50
-  Magazine: 10
+  Magazine: 50
   Damage: 0.5
   ReloadRate: 4
   FireRate: 0.1
   BulletTime: 0.5
   BulletVelocity: 15
-  sprite: {fileID: 21300000, guid: 0b9470a6ae7024979828fb99e5acf2eb, type: 3}
   bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!212 &212051117893641908
 SpriteRenderer:

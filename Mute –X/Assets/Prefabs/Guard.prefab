@@ -342,7 +342,7 @@ MonoBehaviour:
   hits: 2
   killedBy: 
   DropPickup: 1
-  PickupType: 0
+  PickupType: 1
 --- !u!114 &114260601953565278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   MaxDamage: 35
   attacking: 0
   Damage: 0
-  Audio: {fileID: 0}
+  Audio: {fileID: 82022191170070232}
   gun: {fileID: 1407400176982576}
   Bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
   bulletSpeed: 12

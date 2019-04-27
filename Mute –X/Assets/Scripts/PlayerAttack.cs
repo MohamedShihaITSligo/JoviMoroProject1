@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     Weapons gunData;
     bool shooting;
     bool reloading;
-	AudioSource audio;
+    private new AudioSource audio;
 
     private void Start()
     {
@@ -34,7 +35,8 @@ public class PlayerAttack : MonoBehaviour
         // if the fire button is pressed and we have ammo shoOt !
         if ( !gameController.paused)
         {
-            if (Input.GetButton("Fire1")  &&   gunData.Magazine>0 && elipsedTime <= Time.time)
+            // shoot
+            if (Input.GetButton("Fire1")  && gunData.Magazine>0 && elipsedTime <= Time.time && !reloading)
             {
                 InstantiateBullet();
                 elipsedTime = Time.time + (gunData.FireRate - fireRate);
@@ -43,47 +45,55 @@ public class PlayerAttack : MonoBehaviour
                 if (gunData.Magazine <= 0)
                 {
                     gunData.Magazine = 0;
-                    reloading = true;
-                    reloadElipsedTime = Time.time + (gunData.ReloadRate - reloadRate);
+                    Reload();
                 }
             }
             else
             {
                 shooting = false;
             }
+            // reload
+            if (Input.GetMouseButton(1) && gunData.Magazine != gunData.FULL_MAGAZINE)
+            {
+                Reload();
+            }
 
             if (reloading && reloadElipsedTime <= Time.time)
             {
-                
-                if(data.Ammo >= gunData.FULL_MAGAZINE)
-                {
+                if (data.Ammo >= gunData.FULL_MAGAZINE)
+                 {
+                    data.Ammo -= (gunData.FULL_MAGAZINE - gunData.Magazine);
                     gunData.Magazine = gunData.FULL_MAGAZINE;
-                    data.Ammo -= gunData.FULL_MAGAZINE;
                 }
                 else
                 {
-                    gunData.Magazine = data.Ammo;
+                    gunData.Magazine += data.Ammo;
                     data.Ammo = 0;
                 }
-                reloading = gunData.Magazine <=0;
+                reloading = gunData.Magazine <= 0;
             }
 
         }
-        
+        // aim color
         if (reloading || gunData.Magazine <= 0) aimeColor = Color.gray;
         else if (gunData.Magazine < gunData.FULL_MAGAZINE/2) aimeColor = Color.red;
-        else aimeColor = new Color(0, 5, 0, 1);
+        else aimeColor = new Color(0, 1, 0, 1);
         aime.SetColour(aimeColor);
     }
 
+    private void Reload()
+    {
+        reloading = true;
+        reloadElipsedTime = Time.time + (gunData.ReloadRate - reloadRate);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
 
-        if (tag.Equals("Weapon"))
+        if (tag.Equals("Pickup"))
         {
-            gunData.Replace(collision.gameObject);
+            gameController.PickedUp(collision.gameObject);
             Destroy(collision.gameObject);
         }
 
@@ -96,12 +106,10 @@ public class PlayerAttack : MonoBehaviour
 
     void InstantiateBullet()
     {
-
-        gun.transform.rotation = Quaternion.LookRotation(Vector3.forward, aime.transform.position - gun.transform.position);
         Vector3 position = new Vector3(
             gun.transform.position.x,
             gun.transform.position.y,
-            gun.transform.position.z+1
+            gun.transform.position.z
             );
         // Creates the bullet locally
         GameObject bullet = (GameObject)Instantiate(
@@ -110,12 +118,10 @@ public class PlayerAttack : MonoBehaviour
                                 gun.transform.rotation
                                 );
         // Adds velocity to the bullet
-        //bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * gunData.BulletVelocity;
 		audio.Play();
         bullet.GetComponent<Bullet>().SetDamage(gunData.Damage);
         bullet.GetComponent<Bullet>().timer = gunData.BulletTime;
-        //bullet.transform.up = (Vector2)aime.transform.position - bullet.GetComponent<Rigidbody2D>().position;
     }
 
 }

@@ -11,12 +11,11 @@ public class BossDamage : Damageable {
 			Drop(Gun);
 			GameObject ammo = Instantiate(Ammo, transform.position, Quaternion.identity);
 			ammo.GetComponent<Pickups>().SetAmount(100);
-			Debug.Log(ammo.GetComponent<Pickups>().Amount);
 		}
 	}
 
-	public GameObject Drop(GameObject item)
+	public void Drop(GameObject item)
 	{
-		 return Instantiate(item, transform.position, Quaternion.identity);
+		  Instantiate(item, transform.position, Quaternion.identity);
 	}
 }

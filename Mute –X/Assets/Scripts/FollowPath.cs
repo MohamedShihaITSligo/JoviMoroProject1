@@ -67,8 +67,4 @@ public class FollowPath : MonoBehaviour {
         transform.up = currentTarget - body.position;
     }
 
-    private void OnDestroy()
-    {
-        Destroy(path);
-    }
 }

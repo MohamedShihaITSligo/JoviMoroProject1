@@ -361,7 +361,7 @@ MonoBehaviour:
   hits: 3
   killedBy: 
   DropPickup: 1
-  PickupType: 0
+  PickupType: 1
 --- !u!114 &114319209009625500
 MonoBehaviour:
   m_ObjectHideFlags: 1

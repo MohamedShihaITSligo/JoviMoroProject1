@@ -16,6 +16,7 @@ TagManager:
   - LevelController
   - BossEnemy
   - Weapon
+  - Pickup
   layers:
   - Default
   - TransparentFX

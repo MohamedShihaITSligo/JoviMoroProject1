@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4091249757467552}
   - component: {fileID: 212538958648275116}
   - component: {fileID: 61945425243429266}
-  - component: {fileID: 114853760798088294}
+  - component: {fileID: 114628764368688694}
   m_Layer: 0
   m_Name: Ammo
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -154,7 +154,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294926189
---- !u!114 &114853760798088294
+--- !u!114 &114628764368688694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -162,11 +162,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654378161910474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19be8c0121eeaf34582cd789d0067b0f, type: 3}
+  m_Script: {fileID: 11500000, guid: b07367ce8ee56ab42991f0528fb37e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 10
-  sprite: {fileID: 21300000, guid: b67694562b196a842a3300bc9143de89, type: 3}
+  Type: 1
+  Sprite: {fileID: 21300000, guid: b67694562b196a842a3300bc9143de89, type: 3}
+  gameController: {fileID: 0}
+  spriteRenderer: {fileID: 212538958648275116}
 --- !u!212 &212538958648275116
 SpriteRenderer:
   m_ObjectHideFlags: 1

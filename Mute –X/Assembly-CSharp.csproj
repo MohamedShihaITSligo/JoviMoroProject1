@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Aime.cs" />
-     <Compile Include="Assets\Scripts\Ammo.cs" />
      <Compile Include="Assets\Scripts\AmmoUI.cs" />
      <Compile Include="Assets\Scripts\AnimationController.cs" />
      <Compile Include="Assets\Scripts\BossAnimation.cs" />
@@ -70,12 +69,13 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GuardAttack.cs" />
      <Compile Include="Assets\Scripts\GuardController.cs" />
-     <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\HealthUI.cs" />
      <Compile Include="Assets\Scripts\Level4.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\NavigationPath.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveText.cs" />
+     <Compile Include="Assets\Scripts\PauseMenuText.cs" />
      <Compile Include="Assets\Scripts\Pickups.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />
