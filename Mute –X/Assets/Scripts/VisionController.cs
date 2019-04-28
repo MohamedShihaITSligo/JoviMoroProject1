@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VisionController : MonoBehaviour {
-    // Use this for initialization
     // is the player within the enemy's sight range collider 
     //(this only checks if the enemy can theoretically see the player if nothing is in the way)
     public bool playerInRange;
     public SpriteRenderer sprit;
     public Transform lineOfSightEnd;
-    public float visionAngle = 130;
-    // a reference to the player transform for raycasting
+    public float sightDis = 10;
+    public float visionAngle = 360;
     Transform player;
     
     void Start()
     {
         playerInRange = false;
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
     void FixedUpdate()
     {
         if (CanPlayerBeSeen())
-            sprit.color = Color.red;
-        else
-            sprit.color = Color.white;
+        { 
+            gameObject.GetComponentInParent<FollowPath>().detectedPlayer = true;
+        }
+        else if (!CanPlayerBeSeen() && Vector2.Distance(player.transform.position,transform.position) > (sightDis *3.5))
+        {
+            gameObject.GetComponentInParent<FollowPath>().detectedPlayer = false;
+        }
     }
 
 
-    bool CanPlayerBeSeen()
+    public bool CanPlayerBeSeen()
     {
         // we only need to check visibility if the player is within the enemy's visual range
         if (playerInRange)
@@ -99,7 +102,7 @@ public class VisionController : MonoBehaviour {
         foreach (RaycastHit2D hit in hits)
         {
             // ignore the enemy's own colliders (and other enemies)
-            if (hit.transform.tag.Equals("Enemy"))
+            if (hit.transform.tag.EndsWith("Enemy"))
                 continue;
 
             // if anything other than the player is hit then it must be between the player and the enemy's eyes

@@ -5,19 +5,21 @@ using UnityEngine;
 public class FollowPath : MonoBehaviour {
 
     public NavigationPath path;
-    public bool PickRandomStartNode = false;
-    public bool canMove = true;
     public float moveSpeed = 2f;
-    public float distanceToNodeTolerance = 0.2f;
-    public float stopDistance;
+    public bool PickRandomStartNode = false;
+    public bool detectedPlayer = false;
+    public bool canMove = true;
+    public bool following = false;
+    protected GameController gameController;
+    protected Rigidbody2D body;
+    protected float distanceToNodeTolerance = 0.2f;
+    protected Vector2 currentTarget;
+    protected int currentNodeIndex = 0;
 
-    Vector2 currentTarget;
-    Rigidbody2D body;
-    int currentNodeIndex = 0;
-    //StopBox stopBox;
 
-    private void Start()
+    virtual protected void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         body = GetComponent<Rigidbody2D>();
         if (PickRandomStartNode)
         {
@@ -27,26 +29,26 @@ public class FollowPath : MonoBehaviour {
         TeleportToNode();
     }
 
-    private void Update()
+
+    virtual protected void Update()
     {
-        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance)
+        if (Vector2.Distance(transform.position , currentTarget) <= distanceToNodeTolerance )
         {
             GetNextNodePosition();
         }
-        //if (TraficLightGreen()) canMove = true;
-        //else canMove = false;
+
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (canMove)
         {
             body.MovePosition(Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime));
+            body.angularVelocity = 0;
         }
-        body.angularVelocity = 0;
     }
 
-    void TeleportToNode()
+    public void TeleportToNode()
     {
         transform.position = currentTarget;
     }
@@ -55,27 +57,14 @@ public class FollowPath : MonoBehaviour {
     {
         if (currentNodeIndex >= path.NodeCount) currentNodeIndex = 0;
         currentTarget = path.GetNodePosition(currentNodeIndex);
-        transform.up = currentTarget - body.position;
+        LookForward();
         currentNodeIndex++;
     }
 
-    //bool TraficLightGreen()
-    //{
-    //    GameObject[] TraficLights = GameObject.FindGameObjectsWithTag("TrafficLight");
-    //    int shortestIndex = -1;
-    //    float shortestDistance = float.MaxValue;
-    //    for (int i = 0; i < TraficLights.Length; i++)
-    //    {
-    //        float trafficLightDistance = Vector2.Distance(transform.position, TraficLights[i].transform.position);
-    //        if (trafficLightDistance < shortestDistance)
-    //        {
-    //            shortestDistance = trafficLightDistance;
-    //            shortestIndex = i;
-    //        }
-    //    }
-    //    Color TraficLightColor = TraficLights[shortestIndex].GetComponent<TrafficLightController>().GetTrafgicLightState();
-    //    float distance = Vector2.Distance(transform.position, TraficLights[shortestIndex].transform.position);
-    //    if (distance < stopDistance && TraficLightColor.Equals(Color.red)) return false;
-    //    else return true;
-    //}
+
+    public void LookForward()
+    {
+        transform.up = currentTarget - body.position;
+    }
+
 }

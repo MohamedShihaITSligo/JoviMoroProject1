@@ -1,84 +1,93 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using System;
 
-public class GameController: MonoBehaviour {
+public class GameController : MonoBehaviour {
 
-    public GameObject mainMenu;
-    public GameObject howToPlay;
-    public GameObject pauseMenu;
-    public GameObject eventSystem;
+
     public bool paused = false;
-    public bool justStarted = false;
+    public GameObject pauseMenu;
+    public GameObject lostMenu;
+    public GameObject wonMenu;
+    public GameObject[] Pickups;
     Vector3 startingPoint;
-    Slider volume;
-    Text txtVolume;
+    Tilemap walls;
     PlayerData data;
     GameObject player;
-    
+    LevelController level;
+
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        volume = mainMenu.gameObject.GetComponentInChildren<Slider>();
-        txtVolume = volume.GetComponentInChildren<Text>();
-        mainMenu.SetActive(true);
-        howToPlay.SetActive(false);
+        // DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(pauseMenu);
+        lostMenu.SetActive(false);
         pauseMenu.SetActive(false);
-        player.SetActive(false);
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(pauseMenu);
-        DontDestroyOnLoad(eventSystem);
-        DontDestroyOnLoad(player);
+        wonMenu.SetActive(false);
     }
 
     private void Update()
     {
         int index = SceneManager.GetActiveScene().buildIndex;
-        if (index > 0 && Input.GetKeyDown(KeyCode.Escape))
+        if (index > 0)
         {
-            if (!pauseMenu.activeInHierarchy)
+            if (Input.GetKeyDown(KeyCode.Escape) && PlayerAlive())
             {
-                Pause();
-            }
-            else Resume();
-        }
-        switch (index)
-        {
-            case 1:
-                // write level 1 code here 
-                if (justStarted)
+                if (!paused)
                 {
-                    startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
-                    player.transform.position = startingPoint;
-                    justStarted = false;
+                    Pause();
                 }
-                break;
-            case 2:
-                // write level 2 code here 
-                break;
-            case 3:
-                // write level 3 code here 
-                break;
-            case 4:
-                // write level 4 code here
-                break;
+                else Resume();
+            }
+            if (data == null || player == null)
+            {
+                walls = GameObject.Find("Walls").GetComponent<Tilemap>();
+                level = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+                player = GameObject.FindGameObjectWithTag("Player");
+                data = player.GetComponent<PlayerData>();
+                startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
+                player.transform.position = startingPoint;
+                Time.timeScale = 1;
+                //DontDestroyOnLoad(player);
+            }
+
+            if (!PlayerAlive())
+            {
+                paused = true;
+                if (lostMenu != null)
+                    lostMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 
+    //UI
+    internal void PlayerWon()
+    {
+        Time.timeScale = 0;
+        paused = true;
+        wonMenu.SetActive(true);
+    }
     public void Pause()
     {
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
         paused = !paused;
     }
+    
     public void Resume()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         paused = !paused;
+    }
+    public void Continue()
+    {
+        Resume();
+        wonMenu.SetActive(false);
     }
 
     public void ExitButton()
@@ -86,30 +95,46 @@ public class GameController: MonoBehaviour {
         Application.Quit();
     }
 
-    public void PlayButton()
+    public void GoToSurvival()
     {
-        GoToLevel(1);
-        player.SetActive(true);
-        data = player.GetComponent<PlayerData>();
-        
+        GoToLevel(SceneManager.sceneCountInBuildSettings-1);
+    }
+    public void BackToMainMenu()
+    {
+        Resume();
+        Destroy(pauseMenu);
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
-    public void HowToPlay()
+    public void RestartLevel()
     {
-        mainMenu.SetActive(false);
-        howToPlay.SetActive(true);
+        Resume();
+        Destroy(player);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void BackButton()
+    public void ReTry()
     {
-        mainMenu.SetActive(true);
-        howToPlay.SetActive(false);
+        // respawn from the last checkpoint 
+        paused = false;
+        lostMenu.SetActive(false);
+        Time.timeScale = 1;
+        // for now just restart the level
+        Destroy(player);
+        Destroy(pauseMenu);
+        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void UpdateText()
+    public void GoToLevel(int index)
     {
-        float value = volume.value * 100;
-        txtVolume.text= value.ToString("0")+"%";
+        SceneManager.LoadScene(index);
+    }
+    // Player
+    public void IgnorPlayer(Collider2D Item, bool stet)
+    {
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), Item, stet);
     }
 
     public bool PlayerAlive()
@@ -122,25 +147,91 @@ public class GameController: MonoBehaviour {
         else return true;
     }
 
-    public void GoToLevel(int index)
+    public void PlayerDetected()
     {
-        SceneManager.LoadScene(index);
-        justStarted = true;
-    }
-    public void BackToMainMenu()
-    {
-        SceneManager.LoadScene(0);
-        Resume();
-        Destroy(gameObject);
-        Destroy(pauseMenu);
-        Destroy(eventSystem);
-        Destroy(player);
+        if (data != null)
+        {
+            data.Detected = true;
+        }
     }
 
-    public void RestartLevel()
+    public void PlayerUnDetected()
     {
-        player.transform.position = startingPoint;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Resume();
+        if (data != null)
+        {
+            data.Detected = false;
+        }
+    }
+
+    public bool IsPlayerDetected()
+    {
+        if(data!=null)
+            return data.Detected;
+        return false;
+    }
+
+    public Transform PlayerLocation()
+    {
+        if(player != null)
+            return player.transform;
+        else return null;
+    }
+
+    public void DamagePlayer(int amount)
+    {
+        data.DamegPlayer(amount);
+    }
+
+    // Game - level
+    public void DestroyWall(Vector3 worldPosition)
+    {
+        Vector3Int cellPosition = walls.WorldToCell(worldPosition);
+        walls.SetTile(cellPosition, null);
+    }
+
+    public void EnemyKilled()
+    {
+        level.SomeoneDied = true;
+    }
+
+    internal GameObject DropPickup(Vector3 position, int amount, PickupsType type)
+    {
+        GameObject pickup;
+        pickup = Instantiate(Pickups[(int)type], position, Quaternion.identity);
+        pickup.GetComponent<Pickups>().SetAmount(amount);
+        return pickup;
+    }
+
+    public void PickedUp(GameObject pickup)
+    {
+        PickupsType type = pickup.GetComponent<Pickups>().Type;
+        int amount = pickup.GetComponent<Pickups>().Amount;
+        switch (type)
+        {
+            case PickupsType.Health:
+                data.DamegPlayer(amount * -1);
+                break;
+            case PickupsType.Ammo:
+                data.AddAmmo(amount);
+                break;
+            case PickupsType.Shotgun:
+            case PickupsType.Pistol:
+            case PickupsType.Machinegun:
+                type = player.GetComponent<PlayerAttack>().gun.GetComponent<Weapons>().Type;
+                player.GetComponent<PlayerAttack>().gun.GetComponent<Weapons>().Copy(pickup);
+                if (type != PickupsType.Nothing)
+                {
+                    GameObject temp = DropPickup(
+                        pickup.transform.position,
+                        amount,
+                        type
+                        );
+                    // ignor the player for 15 sec
+                    IgnorPlayer(temp.GetComponent<Collider2D>(), true);
+                    temp.GetComponent<Weapons>().Dropped();
+                }
+                break;
+        }
+
     }
 }
