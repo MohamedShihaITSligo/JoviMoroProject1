@@ -22,8 +22,6 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
-        // DontDestroyOnLoad(gameObject);
-        // DontDestroyOnLoad(pauseMenu);
         lostMenu.SetActive(false);
         pauseMenu.SetActive(false);
         wonMenu.SetActive(false);
@@ -42,16 +40,16 @@ public class GameController : MonoBehaviour {
                 }
                 else Resume();
             }
+
             if (data == null || player == null)
             {
-                walls = GameObject.Find("Walls").GetComponent<Tilemap>();
                 level = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
                 player = GameObject.FindGameObjectWithTag("Player");
                 data = player.GetComponent<PlayerData>();
                 startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>().position;
                 player.transform.position = startingPoint;
+                InstantiateMenus();
                 Time.timeScale = 1;
-                //DontDestroyOnLoad(player);
             }
 
             if (!PlayerAlive())
@@ -62,6 +60,13 @@ public class GameController : MonoBehaviour {
                 Time.timeScale = 0;
             }
         }
+    }
+
+    private void InstantiateMenus()
+    {
+        lostMenu = Instantiate(lostMenu);
+        wonMenu = Instantiate(wonMenu);
+        pauseMenu = Instantiate(pauseMenu);
     }
 
     //UI
@@ -116,14 +121,14 @@ public class GameController : MonoBehaviour {
 
     public void ReTry()
     {
-        // respawn from the last checkpoint 
+        // respawn from the last checkpoint  ?
         paused = false;
         lostMenu.SetActive(false);
         Time.timeScale = 1;
         // for now just restart the level
-        Destroy(player);
-        Destroy(pauseMenu);
-        Destroy(gameObject);
+        //Destroy(player);
+        //Destroy(pauseMenu);
+        //Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -132,7 +137,7 @@ public class GameController : MonoBehaviour {
         SceneManager.LoadScene(index);
     }
     // Player
-    public void IgnorPlayer(Collider2D Item, bool stet)
+    public void IgnorePlayer(Collider2D Item, bool stet)
     {
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), Item, stet);
     }
@@ -226,12 +231,11 @@ public class GameController : MonoBehaviour {
                         amount,
                         type
                         );
-                    // ignor the player for 15 sec
-                    IgnorPlayer(temp.GetComponent<Collider2D>(), true);
+                    // ignore the player for 15 sec
+                    IgnorePlayer(temp.GetComponent<Collider2D>(), true);
                     temp.GetComponent<Weapons>().Dropped();
                 }
                 break;
         }
-
     }
 }

@@ -87,7 +87,7 @@ public class Level4 : LevelController {
         {
             // objective 2
             currentObjective = "Lose the Zombies or Kill them";
-            gameController.IgnorPlayer(gameObject.GetComponent<Collider2D>(), false);
+            gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), false);
         }
         else if (!Objectives[2].Done)
         {
@@ -113,7 +113,7 @@ public class Level4 : LevelController {
         if (collision.gameObject.tag.Equals("Player"))
         {
             Objectives[1].Done = !gameController.IsPlayerDetected();
-            gameController.IgnorPlayer(gameObject.GetComponent<Collider2D>(), Objectives[1].Done);
+            gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), Objectives[1].Done);
         }
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(),collision.collider,true);
     }

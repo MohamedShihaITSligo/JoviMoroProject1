@@ -7,6 +7,10 @@ public class PauseMenuText : MonoBehaviour {
 
     public TextMeshProUGUI[] text;
     public LevelController level;
+    private void Start()
+    {
+        level = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+    }
     void Update()
     {
         text[0].text = level.Objectives[0].Text;

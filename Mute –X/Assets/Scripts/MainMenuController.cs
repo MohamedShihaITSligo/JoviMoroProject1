@@ -9,7 +9,6 @@ public class MainMenuController : MonoBehaviour {
     public GameObject howToPlay;
     public GameObject mainMenu;
     public GameObject eventSystem;
-    //GameController gameController;
     Slider volume;
     Text txtVolume;
     // Use this for initialization
@@ -18,8 +17,6 @@ public class MainMenuController : MonoBehaviour {
         mainMenu.SetActive(true);
         volume = mainMenu.GetComponentInChildren<Slider>();
         txtVolume = volume.GetComponentInChildren<Text>();
-        //gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        DontDestroyOnLoad(eventSystem);
     }
 
     public void HowToPlay()
@@ -43,7 +40,6 @@ public class MainMenuController : MonoBehaviour {
     public void PlayButton()
     {
         SceneManager.LoadScene(1);
-        //gameController.firstLevl = true;
     }
 
     public void ExitButton()

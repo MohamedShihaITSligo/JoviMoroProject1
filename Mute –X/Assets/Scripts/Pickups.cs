@@ -48,7 +48,7 @@ public class Pickups : MonoBehaviour {
 
     public void UnIgnorPlayer()
     {
-        gameController.IgnorPlayer(gameObject.GetComponent<Collider2D>(),false);
+        gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(),false);
         spriteRenderer.color = Color.white;
     }
 
