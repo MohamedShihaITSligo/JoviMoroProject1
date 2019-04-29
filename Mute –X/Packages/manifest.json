@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "com.unity.progrids": "3.0.3-preview.4"
+    "com.unity.ads": "exclude",
+    "com.unity.purchasing": "exclude"
   }
 }
