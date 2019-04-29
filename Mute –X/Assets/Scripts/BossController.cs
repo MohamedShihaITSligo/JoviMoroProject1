@@ -10,15 +10,16 @@ public class BossController : GuardController {
         base.FixedUpdate();
         if (following)
         {
-            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) < 4)
+            // keep away fro the player 
+            if (Vector2.Distance(transform.position, gameController.PlayerLocation().position) < 2)
             {
-                // stop and shoot
-                following = false;
+                
+                //following = false;
                 canMove = false;
             }
             else
             {
-                following = true;
+                //following = true;
                 canMove = true;
             }
         }

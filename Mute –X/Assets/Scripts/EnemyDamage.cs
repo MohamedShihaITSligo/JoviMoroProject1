@@ -12,6 +12,7 @@ public class EnemyDamage : Damageable {
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        Damage = GetComponent<EnemyAttack>().Damage;
     }
 
     protected override void Update()
@@ -20,8 +21,6 @@ public class EnemyDamage : Damageable {
         {
             if (DropPickup)
             {
-                Damage = GetComponent<EnemyAttack>().Damage;
-				if (Damage <= 0) Damage = 5;
                 int amount = Damage / 2;
                 if (amount < 10) amount = 10;
                 gameController.DropPickup(transform.position, amount, PickupType);

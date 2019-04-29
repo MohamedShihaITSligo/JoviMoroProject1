@@ -6,12 +6,12 @@ public class Level4 : LevelController {
     public GameObject[] guards;
     GameObject[] enemies;
     GameController gameController;
-    //int zombiesCount;
-    //int guardsCount;
+
     void Start()
     {
         Objectives = new Objective[3];
         Objectives[0] = new Objective("1- Kill 4 zombies and 4 guards");
+        Objectives[0].SubText = "\n  - You killed (" + zombiesKilled + ") Zombies\n  - You killed(" + guardsKilled + ") Guards";
         Objectives[1] = new Objective("2- Reach Boss room without being followed by zombies ");
         Objectives[2] = new Objective("3- Kill Magnus (the Big Boss)");
         currentObjective = Objectives[0].Text.Substring(2);
@@ -26,8 +26,7 @@ public class Level4 : LevelController {
         }
         while (enemies == null);
         EnemeiesAlive = enemies.Length;
-        //guardsCount = guards.Length;
-        //zombiesCount = enemies.Length - guardsCount;
+
     }
 
     private void Update()
@@ -87,6 +86,8 @@ public class Level4 : LevelController {
         {
             // objective 2
             currentObjective = "Lose the Zombies or Kill them";
+            if(GameObject.Find("Boss") == null)
+                currentObjective = " Be careful !! ";
             gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), false);
         }
         else if (!Objectives[2].Done)
@@ -98,13 +99,15 @@ public class Level4 : LevelController {
             else
             {
                 Objectives[2].Done = true;
-                gameController.PlayerWon();
+                gameController.PlayerWon("You Have fineshed the game\n"+"\n!! Survival mode unlocked!!");
             }
         }
         else
         {
             currentObjective = "KILL THEM ALL !!";
         }
+
+        Objectives[0].SubText = "\n  - You killed (" + zombiesKilled + ") Zombies\n  - You killed(" + guardsKilled + ") Guards";
 
     }
 

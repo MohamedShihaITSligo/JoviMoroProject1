@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossDamage : Damageable {
-	public GameObject Gun;
-	public GameObject Ammo;
+    GameController gameController;
+
+    private void Start()
+    {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+    }
 	public void OnDestroy()
 	{
-		if (hits<=0) {
-			Drop(Gun);
-			GameObject ammo = Instantiate(Ammo, transform.position, Quaternion.identity);
-			ammo.GetComponent<Pickups>().SetAmount(100);
-		}
-	}
-
-	public void Drop(GameObject item)
-	{
-		  Instantiate(item, transform.position, Quaternion.identity);
+		if (hits<=0)
+        {
+            gameController.DropPickup(transform.position,100,PickupsType.Ammo);
+            gameController.DropPickup(transform.position,100,PickupsType.Machinegun);
+        }
 	}
 }

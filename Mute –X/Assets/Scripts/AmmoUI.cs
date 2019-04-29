@@ -12,7 +12,6 @@ public class AmmoUI : MonoBehaviour {
 	public PlayerData PlayerData;
 	public Weapons Weapon;
 
-	// Update is called once per frame
 	void Update () {
 		Ammo.text = "/"+PlayerData.Ammo;
 		Magazine.text = ""+Weapon.Magazine;

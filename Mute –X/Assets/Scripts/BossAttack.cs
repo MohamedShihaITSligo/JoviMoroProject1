@@ -15,7 +15,7 @@ public class BossAttack : EnemyAttack {
     float elipsedTime;
     float superElipsedTime;
     public int magazine = 10;
-    const int FULL_MAGAZINE = 10;
+    public int FULL_MAGAZINE = 10;
 	
 	
 
@@ -96,6 +96,6 @@ public class BossAttack : EnemyAttack {
 		bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         bullet.GetComponent<Bullet>().SetDamage(Damage);
         bullet.GetComponent<Bullet>().timer = timer;
-        bullet.tag = "BulletEnemy";
+        //bullet.tag = "BulletEnemy";
     }
 }

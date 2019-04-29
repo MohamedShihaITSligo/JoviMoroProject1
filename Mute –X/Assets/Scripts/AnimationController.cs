@@ -14,13 +14,14 @@ public class AnimationController : MonoBehaviour {
     State state;
     State previousState;
     Animator animator;
-    public bool Player, Ai;
+    public bool Player, AI;
 	void Start () {
         animator = GetComponent<Animator>();
     }
 
 	void FixedUpdate()
     {
+        // if the state changed update the animator
         CheckState();
         if (state != previousState)
         {
@@ -28,6 +29,7 @@ public class AnimationController : MonoBehaviour {
         }
     }
 
+    //check if the player is moving 
     bool MovementKeyDown()
     {
         return Input.GetButton("Horizontal") || Input.GetButton("Vertical");
@@ -35,6 +37,7 @@ public class AnimationController : MonoBehaviour {
 
 	public virtual void CheckState()
     {
+        // player animation
         if (Player)
         {
             if (MovementKeyDown())
@@ -49,8 +52,11 @@ public class AnimationController : MonoBehaviour {
             {
                 SetState(State.Idle);
             }
-        }else if (Ai)
+        }
+        // AI ( zombies and guards)
+        else if (AI)
         {
+            
             if (GetComponent<EnemyAttack>().attacking)
             {
 				SetState(State.Atacking);
@@ -64,6 +70,7 @@ public class AnimationController : MonoBehaviour {
                 SetState(State.Idle);
             }
         }
+
     }
 
 

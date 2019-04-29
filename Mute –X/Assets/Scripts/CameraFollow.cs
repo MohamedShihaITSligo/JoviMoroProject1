@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour {
     {
         transformToFollow = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
+
     void Update()
     {
         tempPosition.x = transformToFollow.position.x;//transformToFollow x

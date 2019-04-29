@@ -13,10 +13,12 @@ public class PlayerData : MonoBehaviour {
     public float Xp = 0;
     public bool Detected = false;
     public int Health;
+    public int Lives;
+
 
     private void Start()
     {
-        ResetPlayerData();
+        ResetPlayerData(10);
     }
 
     private void Update()
@@ -34,11 +36,12 @@ public class PlayerData : MonoBehaviour {
 
     }
 
-    public void ResetPlayerData()
+    public void ResetPlayerData(int ammoAmount)
     {
         Health = MaxHealth;
         Detected = false;
         Xp = 0;
+        Ammo = ammoAmount;
     }
 
     public void DamegPlayer(float amount)
