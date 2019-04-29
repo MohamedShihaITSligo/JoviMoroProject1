@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222930607354230}
   - component: {fileID: 212930548025088022}
+  - component: {fileID: 114584528988785968}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -58,8 +59,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975961762787346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.111, y: 0.143, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.13, z: 1}
+  m_LocalPosition: {x: 0.12, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4650323496486564}
   m_RootOrder: 0
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682555750028832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.33, y: -1.81, z: -1}
+  m_LocalPosition: {x: 4.14, y: -0.68, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 4222930607354230}
@@ -267,12 +268,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df26877c21fd6c245887e7367d6a662e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammo: 9999
+  Ammo: 50
   Level: 1
   Speed: 4
   Xp: 0
   Detected: 0
-  Health: 100
+  Health: 50
 --- !u!114 &114333755688948744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +298,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0155d9e957b8c834cb844a4fecc9ee9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114584528988785968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975961762787346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5943f384420359b47bbfff0d9dea1bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 0
+  Type: 5
+  Sprite: {fileID: 0}
+  gameController: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  FULL_MAGAZINE: 0
+  Magazine: 0
+  Damage: 0
+  ReloadRate: 0
+  FireRate: 0
+  BulletTime: 0
+  BulletVelocity: 0
+  bullet: {fileID: 1225011897849046, guid: 5117fcd4c80337044b0429413d39aba3, type: 2}
 --- !u!114 &114928347100223884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,8 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b135c0cdf03ed89469543bd231f106d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 2
-  reloadRate: 1.5
+  fireRate: 0
+  reloadRate: 0.1
   gun: {fileID: 1975961762787346}
 --- !u!212 &212422730946960364
 SpriteRenderer:
@@ -391,12 +416,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2505c96ebc1cc541a421290db80fb85, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 2.56}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

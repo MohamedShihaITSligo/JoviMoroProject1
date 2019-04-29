@@ -51,4 +51,15 @@ public class Pickups : MonoBehaviour {
         gameController.IgnorPlayer(gameObject.GetComponent<Collider2D>(),false);
         spriteRenderer.color = Color.white;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        string tag = collision.gameObject.tag;
+
+        if (tag.Equals("Player"))
+        {
+            gameController.PickedUp(gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

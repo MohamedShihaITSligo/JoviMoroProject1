@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject gun;
     float elipsedTime;
     float reloadElipsedTime;
-    Aime aime;
+    Aim aim;
     Color aimeColor;
     GameController gameController;
     PlayerData data;
@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         data = gameObject.GetComponentInParent<PlayerData>();
         gunData = gun.GetComponentInParent<Weapons>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        aime = GameObject.Find("Aime").GetComponentInChildren<Aime>();
+        aim = GameObject.Find("Aim").GetComponentInChildren<Aim>();
 		audio = GetComponent<AudioSource>();
 
 	}
@@ -53,7 +53,7 @@ public class PlayerAttack : MonoBehaviour
                 shooting = false;
             }
             // reload
-            if (Input.GetMouseButton(1) && gunData.Magazine != gunData.FULL_MAGAZINE)
+            if (Input.GetMouseButton(1) && gunData.Magazine != gunData.FULL_MAGAZINE && !reloading)
             {
                 Reload();
             }
@@ -78,7 +78,7 @@ public class PlayerAttack : MonoBehaviour
         if (reloading || gunData.Magazine <= 0) aimeColor = Color.gray;
         else if (gunData.Magazine < gunData.FULL_MAGAZINE/2) aimeColor = Color.red;
         else aimeColor = new Color(0, 1, 0, 1);
-        aime.SetColour(aimeColor);
+        aim.SetColour(aimeColor);
     }
 
     private void Reload()
@@ -87,17 +87,17 @@ public class PlayerAttack : MonoBehaviour
         reloadElipsedTime = Time.time + (gunData.ReloadRate - reloadRate);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        string tag = collision.gameObject.tag;
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    string tag = collision.gameObject.tag;
 
-        if (tag.Equals("Pickup"))
-        {
-            gameController.PickedUp(collision.gameObject);
-            Destroy(collision.gameObject);
-        }
+    //    if (tag.Equals("Pickup"))
+    //    {
+    //        gameController.PickedUp(collision.gameObject);
+    //        Destroy(collision.gameObject);
+    //    }
 
-    }
+    //}
 
     public bool IsShooting()
     {
