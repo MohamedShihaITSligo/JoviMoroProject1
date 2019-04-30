@@ -33,7 +33,7 @@ public class ZombiController : FollowPath {
 
             if (following)
             {
-                // code for zombi attack
+                
                 FollowTarget();
             }
         }
