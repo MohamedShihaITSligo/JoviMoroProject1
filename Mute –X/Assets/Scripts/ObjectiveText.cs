@@ -7,8 +7,8 @@ public class ObjectiveText : MonoBehaviour {
 
 	public LevelController level;
     public TextMeshProUGUI textMesh;
-	
-	// Update is called once per frame
+
+
 	void Update () {
         textMesh.text = level.currentObjective;
         if (level.currentObjective.Contains("All"))

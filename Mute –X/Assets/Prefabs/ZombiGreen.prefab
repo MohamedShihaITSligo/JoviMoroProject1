@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 0
-  Ai: 1
+  AI: 1
 --- !u!114 &114259916932566652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,7 +359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 3
-  killedBy: 
   DropPickup: 1
   PickupType: 1
 --- !u!114 &114319209009625500
@@ -375,12 +374,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   moveSpeed: 3
-  PickRandomStartNode: 1
+  PickRandomStartNode: 0
   detectedPlayer: 0
   canMove: 1
   following: 0
-  Idle: 1
-  StayIdle: 1
+  Idle: 0
+  StayIdle: 0
 --- !u!114 &114892852464137842
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -138,7 +138,8 @@ public class GameController : MonoBehaviour {
 
     public void EnemyKilled()// used in level 4(moh)
     {
-        level.SomeoneDied = true;
+        if (level != null)
+            level.SomeoneDied = true;
     }
 
     internal GameObject DropPickup(Vector3 position, int amount, PickupsType type)

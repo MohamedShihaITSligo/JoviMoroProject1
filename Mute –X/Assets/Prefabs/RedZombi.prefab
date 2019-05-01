@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850437832200844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.379997, y: -21.619999, z: -1}
+  m_LocalPosition: {x: -0.36901236, y: 4.1011777, z: -1}
   m_LocalScale: {x: 0.4, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4420338441116554}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   moveSpeed: 3.8
-  PickRandomStartNode: 1
+  PickRandomStartNode: 0
   detectedPlayer: 0
   canMove: 1
   following: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 0
-  Ai: 1
+  AI: 1
 --- !u!114 &114657511867618884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,7 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 5
-  killedBy: 
   DropPickup: 1
   PickupType: 0
 --- !u!212 &212220150089840932

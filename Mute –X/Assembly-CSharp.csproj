@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\SpawnerZombiMode.cs" />
      <Compile Include="Assets\Scripts\VisionController.cs" />
      <Compile Include="Assets\Scripts\Weapons.cs" />
      <Compile Include="Assets\Scripts\ZombiAttack.cs" />
