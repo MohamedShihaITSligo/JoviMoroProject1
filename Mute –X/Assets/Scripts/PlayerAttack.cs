@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject gun;
     float elipsedTime;
     float reloadElipsedTime;
-    Aime aime;
+    Aim aime;
     Color aimeColor;
     GameController gameController;
     PlayerData data;
@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         data = gameObject.GetComponentInParent<PlayerData>();
         gunData = gun.GetComponentInParent<Weapons>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        aime = GameObject.Find("Aime").GetComponentInChildren<Aime>();
+        aime = GameObject.Find("Aim").GetComponentInChildren<Aim>();
 		audio = GetComponent<AudioSource>();
 
 	}

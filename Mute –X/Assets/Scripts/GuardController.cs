@@ -14,7 +14,7 @@ public class GuardController : FollowPath {
             LookForward();
             following = true;
         }
-        else if(following&&(!detectedPlayer|| Vector2.Distance(transform.position,gameController.PlayerLocation().position)>2))
+        else if(following&&(!detectedPlayer|| Vector2.Distance(transform.position,gameController.PlayerLocation().position)>4))
         {
             currentTarget = path.GetNodePosition(currentNodeIndex);
             LookForward();

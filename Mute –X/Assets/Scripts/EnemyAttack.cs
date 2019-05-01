@@ -18,6 +18,7 @@ public class EnemyAttack : MonoBehaviour {
    
     private void OnDestroy()
     {
-        gameController.PlayerUnDetected();
+        if(gameController != null)
+            gameController.PlayerUnDetected();
     }
 }

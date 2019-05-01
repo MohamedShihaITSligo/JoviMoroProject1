@@ -22,11 +22,12 @@ GameObject:
   - component: {fileID: 212409413863581282}
   - component: {fileID: 114179740535423010}
   - component: {fileID: 61879448310496002}
-  - component: {fileID: 50569158201590534}
   - component: {fileID: 233746189007514836}
+  - component: {fileID: 50055155312534190}
+  - component: {fileID: 233088455504780112}
   m_Layer: 0
   m_Name: door
-  m_TagString: WallEnemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,14 +38,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1249794012778454}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.5, y: 5.1, z: 0}
-  m_LocalScale: {x: 0.1, y: 1.5849391, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -2.9485927, y: 1.4259332, z: 0.078125}
+  m_LocalScale: {x: 0.10000006, y: 1.5849401, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!50 &50569158201590534
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!50 &50055155312534190
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -76,7 +77,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.036152482, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -87,7 +88,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.7967877, y: 0.64}
   m_EdgeRadius: 0
 --- !u!114 &114179740535423010
 MonoBehaviour:
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1249794012778454}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3940b09dde47e64f97db8c63c8f3b25, type: 3}
   m_Name: 
@@ -147,6 +148,29 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!233 &233088455504780112
+HingeJoint2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1249794012778454}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0.3}
+  m_ConnectedAnchor: {x: -1.9754822, y: 0.9}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 1
+  m_AngleLimits:
+    m_LowerAngle: -98.8068
+    m_UpperAngle: 101.04096
 --- !u!233 &233746189007514836
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -161,7 +185,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.3}
-  m_ConnectedAnchor: {x: 0.024518102, y: 5.1}
+  m_ConnectedAnchor: {x: -1.9754822, y: 0.9}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

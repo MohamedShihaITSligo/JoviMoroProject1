@@ -53,7 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Aime.cs" />
+     <Compile Include="Assets\Scripts\Aim.cs" />
      <Compile Include="Assets\Scripts\AmmoUI.cs" />
      <Compile Include="Assets\Scripts\AnimationController.cs" />
      <Compile Include="Assets\Scripts\BossAnimation.cs" />
@@ -70,7 +70,7 @@
      <Compile Include="Assets\Scripts\GuardAttack.cs" />
      <Compile Include="Assets\Scripts\GuardController.cs" />
      <Compile Include="Assets\Scripts\HealthUI.cs" />
-     <Compile Include="Assets\Scripts\Level4.cs" />
+     <Compile Include="Assets\Scripts\InGameMenus.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\NavigationPath.cs" />

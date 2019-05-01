@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GuardAttack : EnemyAttack {
+	
     public GameObject gun;
     public GameObject Bullet;
     public float bulletSpeed = 10f;
@@ -15,6 +16,7 @@ public class GuardAttack : EnemyAttack {
         if (foundPlayer)
         {
             Shoot();
+			GetComponent<FollowPath> ().canMove = false;
         }
         else
         {
