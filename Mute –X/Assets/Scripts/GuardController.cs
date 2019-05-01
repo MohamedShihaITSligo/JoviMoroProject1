@@ -21,6 +21,8 @@ public class GuardController : FollowPath {
             gameController.PlayerUnDetected();
             following = false;
         }
+
         
     }
+
 }
