@@ -16,7 +16,6 @@ public class MainMenuController : MonoBehaviour {
         howToPlay.SetActive(false);
         mainMenu.SetActive(true);
         volume = mainMenu.GetComponentInChildren<Slider>();
-        txtVolume = volume.GetComponentInChildren<Text>();
     }
 
     public void HowToPlay()
@@ -31,11 +30,7 @@ public class MainMenuController : MonoBehaviour {
         howToPlay.SetActive(false);
     }
 
-    public void UpdateText()
-    {
-        float value = volume.value * 100;
-        txtVolume.text = value.ToString("0") + "%";
-    }
+   
 
     public void PlayButton()
     {

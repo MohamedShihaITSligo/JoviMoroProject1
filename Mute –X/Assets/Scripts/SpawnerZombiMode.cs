@@ -7,11 +7,16 @@ public class SpawnerZombiMode : LevelController {
     public GameObject[] zombies;
     public NavigationPath path;
     public float SpawnRate;
+    public int zombiesToKill;
     float elipsedTime;
+    
     void Start()
     {
         Objectives = new Objective[1];
         Objectives[0] = new  Objective("Kill As many as you can !!");
+        currentObjective = Objectives[0].Text;
+        Time.timeScale = 1;
+        
     }
     // Update is called once per frame
     void Update () {
@@ -26,22 +31,32 @@ public class SpawnerZombiMode : LevelController {
         {
             zombiesKilled++;
             Objectives[0].SubText = ("You have Killed  "+zombiesKilled+" Zombies");
-            //to do
-            // update current text in UI
+            currentObjective = Objectives[0].SubText;
+            SomeoneDied = false;
         }
+
+        if(zombiesKilled > zombiesToKill)
+        {
+            SpawnRate -= 0.5f;
+            zombiesToKill = zombiesKilled / 2;
+            if(zombiesKilled <= 5)
+                zombiesToKill = 5;
+            
+        }
+
 	}
 
     void InstantiateZombie()
     {
+        float random = Random.Range(0, 100);
+        int zombieIndex = 0;
+        if (random < 50)
+            zombieIndex = 1;
         // to do
-        // set spwan pos
-        // spwaon path
         NavigationPath newPath = Instantiate(path , path.transform.position,Quaternion.identity);
-        GameObject zombie = Instantiate(zombies[Random.Range(0,zombies.Length-1)]);
+        GameObject zombie = Instantiate(zombies[zombieIndex] , path.transform.position ,Quaternion.identity);
         zombie.GetComponent<FollowPath>().path = newPath;
         zombie.GetComponent<EnemyDamage>().DropPickup = true;
         zombie.GetComponent<EnemyDamage>().PickupType = PickupsType.Ammo;
-        zombie.GetComponent<EnemyAttack>().MinDamage = 20;
-        zombie.GetComponent<EnemyAttack>().MaxDamage = 30;
     }
 }

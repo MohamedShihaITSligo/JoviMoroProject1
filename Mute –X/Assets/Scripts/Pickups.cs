@@ -43,12 +43,12 @@ public class Pickups : MonoBehaviour {
     public void Dropped()
     {
         spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-        Invoke("UnIgnorPlayer",10);
+        Invoke("UnIgnorPlayer",3);
     }
 
     public void UnIgnorPlayer()
     {
-        gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(),false);
+        gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), false);
         spriteRenderer.color = Color.white;
     }
 

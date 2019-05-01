@@ -109,7 +109,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 position = new Vector3(
             gun.transform.position.x,
             gun.transform.position.y,
-            gun.transform.position.z
+            gun.transform.position.z+1
             );
         // Creates the bullet locally
         GameObject bullet = (GameObject)Instantiate(

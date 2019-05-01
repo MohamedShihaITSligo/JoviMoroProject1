@@ -10,7 +10,7 @@ public class BossAttack : EnemyAttack {
     public float fireRate = 1.5f;
     public float superFireRate = 0.2f;
     public float reloadTime = 3f;
-    public bool reloading = false;
+    //public bool reloading = false;
     public bool super = false;
     float elipsedTime;
     float superElipsedTime;
@@ -41,7 +41,7 @@ public class BossAttack : EnemyAttack {
         if (!super && elipsedTime <= Time.time && magazine > 0)
         {
 			attacking = true;
-            reloading = false;
+            //reloading = false;
             bulletSpeed = 15f;
 			InstantiateBullet(0.5f);
             magazine--;
@@ -65,7 +65,7 @@ public class BossAttack : EnemyAttack {
                 if (magazine <= 0)
                 {
                     super = false;
-                    reloading = true;
+                    //reloading = true;
 					attacking = false;
                     elipsedTime = Time.time + reloadTime;
                     magazine = FULL_MAGAZINE;

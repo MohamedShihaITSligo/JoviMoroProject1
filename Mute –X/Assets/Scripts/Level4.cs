@@ -20,11 +20,7 @@ public class Level4 : LevelController {
             Objectives[i].Done = false;
         }
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        do
-        {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        }
-        while (enemies == null);
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         EnemeiesAlive = enemies.Length;
 
     }
@@ -117,7 +113,8 @@ public class Level4 : LevelController {
         {
             Objectives[1].Done = !gameController.IsPlayerDetected();
             gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), Objectives[1].Done);
-        }
+            
+        }else
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(),collision.collider,true);
     }
 

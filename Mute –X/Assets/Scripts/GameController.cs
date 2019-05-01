@@ -31,6 +31,13 @@ public class GameController : MonoBehaviour {
         
     }
 
+    internal int GetPlayerLives()
+    {
+        if (data != null)
+            return data.Lives;
+        else return 0;
+    }
+
     private void Update()
     { 
         Sceneindex = SceneManager.GetActiveScene().buildIndex;
@@ -139,7 +146,10 @@ public class GameController : MonoBehaviour {
     public void EnemyKilled()// used in level 4(moh)
     {
         if (level != null)
+        {
             level.SomeoneDied = true;
+            level.EnemeiesKilled += 1;
+        }
     }
 
     internal GameObject DropPickup(Vector3 position, int amount, PickupsType type)
