@@ -33,7 +33,7 @@ public class HealthUI : MonoBehaviour {
         {
             newColor = new Color(236, 118, 0);
         }
-        else newColor = Color.green;
+        else newColor = new Color(0.09211465f, 0.8490566f, 0.2100936f, 0.3215686f);
         fillImage.color = newColor;
     }
 }

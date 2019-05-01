@@ -81,7 +81,7 @@ public class Level4 : LevelController {
         else if (gameController.IsPlayerDetected() || !Objectives[1].Done)
         {
             // objective 2
-            currentObjective = "Lose the Zombies or Kill them";
+            if (!Objectives[1].Done) currentObjective = "Go to the Boss undetected";
             if(GameObject.Find("Boss") == null)
                 currentObjective = " Be careful !! ";
             gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), false);
@@ -96,6 +96,7 @@ public class Level4 : LevelController {
             {
                 Objectives[2].Done = true;
                 gameController.PlayerWon("You Have fineshed the game\n"+"\n!! Survival mode unlocked!!");
+                gameController.GameWon();
             }
         }
         else
@@ -114,8 +115,9 @@ public class Level4 : LevelController {
             Objectives[1].Done = !gameController.IsPlayerDetected();
             gameController.IgnorePlayer(gameObject.GetComponent<Collider2D>(), Objectives[1].Done);
             
-        }else
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(),collision.collider,true);
+        }
+        else
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(),collision.collider,true);
     }
 
     

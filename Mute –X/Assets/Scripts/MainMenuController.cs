@@ -9,13 +9,12 @@ public class MainMenuController : MonoBehaviour {
     public GameObject howToPlay;
     public GameObject mainMenu;
     public GameObject eventSystem;
-    Slider volume;
     Text txtVolume;
     // Use this for initialization
     void Start () {
         howToPlay.SetActive(false);
         mainMenu.SetActive(true);
-        volume = mainMenu.GetComponentInChildren<Slider>();
+        
     }
 
     public void HowToPlay()

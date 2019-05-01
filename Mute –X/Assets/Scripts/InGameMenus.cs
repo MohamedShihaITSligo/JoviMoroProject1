@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,9 @@ public class InGameMenus : MonoBehaviour {
     public GameObject pauseMenu;
     public GameObject lostMenu;
     public GameObject wonMenu;
+    public Button goToZombiMode;
     GameController gameController;
+    
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -27,7 +30,7 @@ public class InGameMenus : MonoBehaviour {
             }
             else Resume();
         }
-        
+
     }
 
     public void Pause()
@@ -80,5 +83,10 @@ public class InGameMenus : MonoBehaviour {
     public void GoToLevel(int index)
     {
         SceneManager.LoadScene(index);
+    }
+
+    internal void EnableButton()
+    {
+        goToZombiMode.interactable = true;
     }
 }

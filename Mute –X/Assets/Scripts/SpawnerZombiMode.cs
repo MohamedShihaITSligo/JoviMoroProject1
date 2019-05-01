@@ -37,7 +37,7 @@ public class SpawnerZombiMode : LevelController {
 
         if(zombiesKilled > zombiesToKill)
         {
-            SpawnRate -= 0.5f;
+            SpawnRate -= 0.1f;
             zombiesToKill = zombiesKilled / 2;
             if(zombiesKilled <= 5)
                 zombiesToKill = 5;

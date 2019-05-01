@@ -12,9 +12,7 @@ public class LevelController : MonoBehaviour {
     public int AmmoGatherd { get; set; }
     public int zombiesKilled { get; set; }
     public int guardsKilled { get; set; }
-
-    
-
+   
 }
 
 public class Objective

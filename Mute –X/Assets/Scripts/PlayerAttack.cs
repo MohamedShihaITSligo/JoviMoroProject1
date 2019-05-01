@@ -53,7 +53,7 @@ public class PlayerAttack : MonoBehaviour
                 shooting = false;
             }
             // reload
-            if (Input.GetMouseButton(1) && gunData.Magazine != gunData.FULL_MAGAZINE && !reloading)
+            if (Input.GetMouseButton(1) && gunData.Magazine != gunData.FULL_MAGAZINE && !reloading  && data.Ammo!= 0)
             {
                 Reload();
             }
@@ -65,10 +65,20 @@ public class PlayerAttack : MonoBehaviour
                     data.Ammo -= (gunData.FULL_MAGAZINE - gunData.Magazine);
                     gunData.Magazine = gunData.FULL_MAGAZINE;
                 }
-                else
+                else if (gunData.Magazine+data.Ammo <= gunData.FULL_MAGAZINE)
                 {
                     gunData.Magazine += data.Ammo;
                     data.Ammo = 0;
+
+                }
+                else
+                {
+                    gunData.Magazine += data.Ammo;
+                    if (gunData.Magazine > gunData.FULL_MAGAZINE)
+                    {
+                        data.Ammo = gunData.Magazine - gunData.FULL_MAGAZINE;
+                        gunData.Magazine = gunData.FULL_MAGAZINE;
+                    }
                 }
                 reloading = gunData.Magazine <= 0;
             }

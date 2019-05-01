@@ -143,6 +143,11 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    internal void GameWon()
+    {
+        gameMenus.EnableButton();
+    }
+
     public void EnemyKilled()// used in level 4(moh)
     {
         if (level != null)
