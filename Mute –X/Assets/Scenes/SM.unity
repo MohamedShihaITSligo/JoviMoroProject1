@@ -867,6 +867,7 @@ MonoBehaviour:
   - {fileID: 1777239834270730, guid: abcfd2910870abc4bad1d60f48dad601, type: 2}
   path: {fileID: 249537644}
   SpawnRate: 10
+  zombiesToKill: 10
 --- !u!212 &1146850438 stripped
 SpriteRenderer:
   m_PrefabParentObject: {fileID: 212581187358795088, guid: 90d82d58c01ce944f86f071c9a381543,

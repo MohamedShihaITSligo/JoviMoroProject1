@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour {
         // Take one life and continue 
         // if lives less then 0 Restart the 
         data.Lives--;
-        int temp = (level.AmmoGatherd / 30) * 100;
+        int temp = (level.AmmoGatherd / 100) * 30;
         data.ResetPlayerData(temp);
         Time.timeScale = 1;
         if (data.Lives < 0)

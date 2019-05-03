@@ -38,7 +38,7 @@ public class SpawnerZombiMode : LevelController {
         if(zombiesKilled > zombiesToKill)
         {
             SpawnRate -= 0.1f;
-            zombiesToKill = zombiesKilled / 2;
+            zombiesToKill += zombiesKilled / 3;
             if(zombiesKilled <= 5)
                 zombiesToKill = 5;
             
@@ -52,10 +52,11 @@ public class SpawnerZombiMode : LevelController {
         int zombieIndex = 0;
         if (random < 50)
             zombieIndex = 1;
-        // to do
         NavigationPath newPath = Instantiate(path , path.transform.position,Quaternion.identity);
         GameObject zombie = Instantiate(zombies[zombieIndex] , path.transform.position ,Quaternion.identity);
         zombie.GetComponent<FollowPath>().path = newPath;
+        zombie.GetComponent<EnemyAttack>().MinDamage = zombiesKilled;
+        zombie.GetComponent<EnemyAttack>().MaxDamage = zombiesToKill;
         zombie.GetComponent<EnemyDamage>().DropPickup = true;
         zombie.GetComponent<EnemyDamage>().PickupType = PickupsType.Ammo;
     }

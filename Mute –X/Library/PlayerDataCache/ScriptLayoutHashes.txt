@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/s00189636/Desktop/Mute-X/Mute-X.exe
+C:/Users/user/Documents/GitHub/JoviMoroProject1/Mute –X/exe/exe.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Level4.unity
